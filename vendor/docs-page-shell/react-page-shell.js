@@ -279,8 +279,8 @@ var navigationMenuData = {
 };
 
 var ORIGIN_DOCS_PRODUCTION = 'https://docs.mapbox.com';
-var DEFAULT_SOCIAL_IMAGE_URL = 'https://static-assets.mapbox.com/branding/social/social-1200x630.v1.png';
-var DEFAULT_SOCIAL_IMAGE_THUMBNAIL_URL = 'https://static-assets.mapbox.com/branding/social/social-120x120.v1.png';
+var DEFAULT_SOCIAL_IMAGE_URL = 'https://static-assets.mapbox.com/branding/social/social-1200x630.v2.jpg';
+var DEFAULT_SOCIAL_IMAGE_THUMBNAIL_URL = 'https://static-assets.mapbox.com/branding/social/social-120x120.v2.png';
 
 var MOBILE_HEADER_HEIGHT = 72;
 
