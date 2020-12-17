@@ -1,6 +1,6 @@
 ---
 title: Animate the camera along a path
-description: Utilize the `FreeCamera` API to follow a path over 3D terrain.
+description: Use the FreeCamera API to follow a path over 3D terrain.
 topics:
   - Camera
   - 3D
@@ -15,5 +15,7 @@ prependJs:
 - "import Example from '../../components/example';"
 - "import html from './free-camera-path.html';"
 ---
+
+Use the [`FreeCamera` API](/mapbox-gl-js/api/properties/#freecameraoptions) to follow a path over 3D terrain.
 
 {{ <Example html={html} {...this.props} /> }}

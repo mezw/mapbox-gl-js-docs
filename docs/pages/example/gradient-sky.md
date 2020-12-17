@@ -16,4 +16,6 @@ prependJs:
 - "import html from './gradient-sky.html';"
 ---
 
+Add a customizable, gradient [sky layer](/mapbox-gl-js/style-spec/layers/#sky).
+
 {{ <Example html={html} {...this.props} /> }}

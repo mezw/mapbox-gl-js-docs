@@ -16,4 +16,6 @@ prependJs:
 - "import html from './atmospheric-sky.html';"
 ---
 
+Add a customizable [sky layer](/mapbox-gl-js/style-spec/layers/#sky) that simulates the natural scattering of light in the atmosphere.
+
 {{ <Example html={html} {...this.props} /> }}
