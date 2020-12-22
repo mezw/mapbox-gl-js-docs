@@ -21,10 +21,7 @@
         background-color: #4ea0da;
     }
 </style>
-<script
-    src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"
-    charset="utf-8"
-></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
 
 <div id="map"></div>
 <div class="overlay">
@@ -76,7 +73,7 @@
     };
 
     // Calculate the distance in kilometers between route start/end point.
-    var lineDistance = turf.lineDistance(route.features[0], 'kilometers');
+    var lineDistance = turf.length(route.features[0]);
 
     var arc = [];
 
@@ -87,7 +84,7 @@
 
     // Draw an arc between the `origin` & `destination` of the two points
     for (var i = 0; i < lineDistance; i += lineDistance / steps) {
-        var segment = turf.along(route.features[0], i, 'kilometers');
+        var segment = turf.along(route.features[0], i);
         arc.push(segment.geometry.coordinates);
     }
 
@@ -133,31 +130,33 @@
         });
 
         function animate() {
+            var start =
+                route.features[0].geometry.coordinates[
+                    counter >= steps ? counter - 1 : counter
+                ];
+            var end =
+                route.features[0].geometry.coordinates[
+                    counter >= steps ? counter : counter + 1
+                ];
+            if (!start || !end) return;
+
             // Update point geometry to a new position based on counter denoting
-            // the index to access the arc.
+            // the index to access the arc
             point.features[0].geometry.coordinates =
                 route.features[0].geometry.coordinates[counter];
 
             // Calculate the bearing to ensure the icon is rotated to match the route arc
-            // The bearing is calculate between the current point and the next point, except
-            // at the end of the arc use the previous point and the current point
+            // The bearing is calculated between the current point and the next point, except
+            // at the end of the arc, which uses the previous point and the current point
             point.features[0].properties.bearing = turf.bearing(
-                turf.point(
-                    route.features[0].geometry.coordinates[
-                        counter >= steps ? counter - 1 : counter
-                    ]
-                ),
-                turf.point(
-                    route.features[0].geometry.coordinates[
-                        counter >= steps ? counter : counter + 1
-                    ]
-                )
+                turf.point(start),
+                turf.point(end)
             );
 
-            // Update the source with this new data.
+            // Update the source with this new data
             map.getSource('point').setData(point);
 
-            // Request the next frame of animation so long the end has not been reached.
+            // Request the next frame of animation as long as the end has not been reached
             if (counter < steps) {
                 requestAnimationFrame(animate);
             }
@@ -177,11 +176,11 @@
                 // Reset the counter
                 counter = 0;
 
-                // Restart the animation.
+                // Restart the animation
                 animate(counter);
             });
 
-        // Start the animation.
+        // Start the animation
         animate(counter);
     });
 </script>
