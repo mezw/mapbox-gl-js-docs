@@ -15,6 +15,15 @@ raster-dem
 geojson
 ResolvedImage
 Referer
+Transpiling
+ES6
+ES5
+Webpack
+Transpilation
+transpile
+WebWorker
+webpack-worker-loader
+rollup-plugin-worker-loader
 Mapillary
 bathymetry
 bezier

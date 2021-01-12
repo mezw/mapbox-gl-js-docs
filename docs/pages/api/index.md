@@ -101,6 +101,83 @@ Mapbox GL JS v2 is backwards-compatible and existing layers and APIs will contin
   * *Terrain:* The height map for over-zoomed tiles is not being retained.
   * To report new issues with Mapbox GL JS v2, create a [bug report](https://github.com/mapbox/mapbox-gl-js/issues/new?template=Bug_report.md) on GitHub.
 
+## Transpiling v2
+
+Mapbox GL JS v2 is distributed as an ES6 compatible JavaScript bundle and is compatible with all major modern browsers. If you are using v2 with a module bundler such as Webpack or Rollup along with a transpiler such as Babel, use the ignore option in Babel to prevent Mapbox GL JS from being transpiled:
+
+* If you are using Webpack, you can use the `!` prefix in the import statement to exclude mapbox-gl from being transformed by existing loaders. See Webpack loaders [inline usage docs](https://webpack.js.org/concepts/loaders/#inline) for more details.
+
+```js
+import mapboxgl from '!mapbox-gl';
+```
+
+**OR**
+
+* You can also configure this centrally in `webpack.config.js` by adding the [ignore](https://babeljs.io/docs/en/options#ignore) option to Babel.
+
+```
+use: {
+  loader: 'babel-loader',
+  options: {
+    presets: ['my-custom-babel-preset'],
+    ..,
+    ..,
+    ignore: [ './node_modules/mapbox-gl/mapbox-gl.js' ]
+  }
+}
+```
+
+### Forcing Transpilation with Babel
+
+If your application requires ES5 compatibility, then your module bundler needs to be configured to load and transpile Mapbox GL JS's WebWorker separately. Mapbox GL JS can be configured with bundler specific `worker-loader` plugins. (See. [webpack-worker-loader] (https://webpack.js.org/loaders/worker-loader/) and [rollup-plugin-worker-loader](https://www.npmjs.com/package/rollup-plugin-web-worker-loader)).
+
+
+* If you are using Webpack, you can configure `worker-loader` to be used inline when importing mapbox-gl:
+
+```js
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
+import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'; // Load worker code separately with worker-loader
+
+mapboxgl.workerClass = MapboxWorker; // Wire up loaded worker to be used instead of the default
+let map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+    center: [-74.5, 40], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+});
+```
+
+**OR**
+
+* You can also configure `worker-loader` centrally in `webpack.config.js` :
+```
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\bmapbox-gl-csp-worker.js\b/i,
+        use: { loader: "worker-loader" },
+      },
+    ],
+  },
+};
+```
+and then integrate the Webpack loaded worker with Mapbox GL JS:
+
+```js
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
+import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker';
+
+mapboxgl.workerClass = MapboxWorker;
+let map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+    center: [-74.5, 40], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+});
+```
+
+
 ## CSP Directives
 
 As a mitigation for Cross-Site Scripting and other types of web security vulnerabilities, you may use a [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/Security/CSP) to specify security policies for your website. If you do, Mapbox GL JS requires the following CSP directives:
