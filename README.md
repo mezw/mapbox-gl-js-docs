@@ -42,8 +42,8 @@ API documentation is written as [JSDoc comments](http://usejsdoc.org/) and proce
 Examples are written as [Batfish](https://github.com/mapbox/batfish) pages in `docs/pages/example`. Each example requires two files: an `.html` file containing the source
 code for the example, and a `.js` file containing example boilerplate and front matter. The front matter should include the following items:
 
-* `title`: A short title for the example in **sentence case** as a **verb phrase**.
-* `description`: A one sentence description of the example in plain text. This description will appear alongside a thumbnail and title on the examples page.
+* `title`: A short title for the example in **sentence case** as a **verb phrase** using plain language (ie, no method names).
+* `description`: A description of the example beginning with the signal phrase `This example...` using plain language (ie, no method names), followed by some technical description, including links to pages on `docs.mapbox.com`, describing specifically how the example is using Mapbox GL JS to achieve the outcome described in the first sentence. This description will appear alongside a thumbnail and title on the example page.
 * `topics`: An array of topics for the example, see `docs/data/topics.json` for a list of topics.
 * `thumbnail`: The filename of the example's thumbnail image (without the file extension).
 * `contentType: example`: Set the contentType to equal example.
