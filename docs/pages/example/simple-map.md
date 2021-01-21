@@ -16,6 +16,8 @@ prependJs:
 - "import html from './simple-map.html';"
 ---
 
-Initialize a map in an HTML element with Mapbox GL JS.
+This example uses [`mapboxgl.Map`](/mapbox-gl-js/api/map) to initialize a Mapbox map inside an HTML element on a webpage.
+
+You can use [`map` properties](/mapbox-gl-js/api/map/#map-parameters) such as `style`, `center`, and `zoom` to define the initial appearance of the map.
 
 {{ <Example html={html} {...this.props} /> }}

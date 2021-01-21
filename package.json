@@ -67,7 +67,7 @@
     "remark-lint-heading-increment": "^2.0.1",
     "remark-react": "^5.0.1",
     "slugg": "^1.2.1",
-    "tap-min": "^2.0.0",
+    "tap-spec": "^5.0.0",
     "tape": "^5.0.1"
   },
   "scripts": {
@@ -82,7 +82,7 @@
     "build": "batfish build",
     "serve-static": "batfish serve-static",
     "pretest": "npm run lint",
-    "test": "tape test/*.test.js | tap-min && npm run lint-md && npm run test-content && jest",
+    "test": "tape test/*.test.js | tap-spec && npm run lint-md && npm run test-content && jest",
     "test-content": "copyeditor docs/pages/",
     "start": "NODE_OPTIONS=\"--max_old_space_size=2048\" DEPLOY_ENV=local batfish start",
     "create-image": "node docs/bin/create-image",

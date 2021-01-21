@@ -34,12 +34,13 @@
 
     map.on('load', function () {
         // Add the source to query. In this example we're using
-        // county polygons uploaded as vector tiles
+        // county polygons uploaded as vector tiles.
         map.addSource('counties', {
             'type': 'vector',
             'url': 'mapbox://mapbox.82pkq93d'
         });
-
+        // Add transparent county polygons
+        // for default display.
         map.addLayer(
             {
                 'id': 'counties',
@@ -52,8 +53,10 @@
                 }
             },
             'settlement-label'
-        ); // Place polygon under these labels.
+        ); // Place polygons under labels.
 
+        // Add filled county polygons
+        // for highlighted display.
         map.addLayer(
             {
                 'id': 'counties-highlighted',
@@ -65,20 +68,23 @@
                     'fill-color': '#6e599f',
                     'fill-opacity': 0.75
                 },
+                // Display none by adding a
+                // filter with an empty string.
                 'filter': ['in', 'COUNTY', '']
             },
             'settlement-label'
-        ); // Place polygon under these labels.
+        ); // Place polygons under labels.
 
         map.on('mousemove', 'counties', function (e) {
             // Change the cursor style as a UI indicator.
             map.getCanvas().style.cursor = 'pointer';
 
-            // Single out the first found feature.
+            // Use the first found feature.
             var feature = e.features[0];
 
-            // Query the counties layer visible in the map. Use the filter
-            // param to only collect results that share the same county name.
+            // Query the counties layer visible in the map.
+            // Use filter to collect only results
+            // with the same county name.
             var relatedFeatures = map.querySourceFeatures('counties', {
                 sourceLayer: 'original',
                 filter: ['in', 'COUNTY', feature.properties.COUNTY]
@@ -87,7 +93,7 @@
             // Render found features in an overlay.
             overlay.innerHTML = '';
 
-            // Total the population of all features
+            // Total the populations of all features.
             var populationSum = relatedFeatures.reduce(function (
                 memo,
                 feature
@@ -111,14 +117,15 @@
             overlay.appendChild(population);
             overlay.style.display = 'block';
 
-            // Add features that share the same county name to the highlighted layer.
+            // Add features with the same county name
+            // to the highlighted layer.
             map.setFilter('counties-highlighted', [
                 'in',
                 'COUNTY',
                 feature.properties.COUNTY
             ]);
 
-            // Display a popup with the name of the county
+            // Display a popup with the name of the county.
             popup
                 .setLngLat(e.lngLat)
                 .setText(feature.properties.COUNTY)

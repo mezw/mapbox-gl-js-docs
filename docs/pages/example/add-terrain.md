@@ -17,6 +17,8 @@ prependJs:
 - "import html from './add-terrain.html';"
 ---
 
-Use [`setTerrain`](/mapbox-gl-js/api/map/#map#setterrain) to add 3D terrain to a map using a raster terrain source.
+This example adds 3D terrain to a map using [`setTerrain`](/mapbox-gl-js/api/map/#map#setterrain) with a [`raster-dem` source](/mapbox-gl-js/style-spec/sources/#raster-dem). 
+
+It uses [`exaggeration`](https://docs.mapbox.com/mapbox-gl-js/style-spec/terrain/#exaggeration) to exaggerate the height of the terrain. It also adds a [`sky` layer](https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#sky) that shows when the map is highly [pitched](https://docs.mapbox.com/help/glossary/camera/).
 
 {{ <Example html={html} {...this.props} /> }}

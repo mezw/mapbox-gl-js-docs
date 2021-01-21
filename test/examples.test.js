@@ -13,12 +13,12 @@ const readPost = (filename) => {
         return {
             name: filename,
             file,
-            metadata: frontmatter ? jsyaml.safeLoad(frontmatter) : null,
+            frontmatter: frontmatter ? jsyaml.safeLoad(frontmatter) : null,
             content: parts[2]
         };
     } catch (err) {
         return new Error(
-            `\nCould not read metadata, check the syntax of the metadata and front matter: ${filename}`
+            `\nCould not read frontmatter, check the syntax of the frontmatter: ${filename}`
         );
     }
 };
@@ -47,42 +47,43 @@ const listExamplesHtml = (dir) => {
 listExamplesMd('./docs/pages/example/')
     .filter((example) => example !== './docs/pages/example/index.md')
     .forEach((example) => {
-        const { metadata, file } = readPost(example);
+        const { frontmatter, content } = readPost(example);
 
-        if (metadata) {
+        if (frontmatter) {
             test(`Example topics: ${example}`, (t) => {
-                t.ok(metadata.topics, 'has topics');
+                t.ok(frontmatter.topics, 'has topics');
                 t.end();
             });
 
             test(`Example description: ${example}`, (t) => {
                 const regex = /\[|]|`/g;
                 t.ok(
-                    !metadata.description.match(regex),
+                    !frontmatter.description.match(regex),
                     'description is plain text and does not use markdown'
                 );
                 t.end();
             });
 
             test(`Example thumbnail: ${example}`, (t) => {
-                t.ok(metadata.thumbnail, 'has thumbnail');
-                const imagePathSrc = `./docs/img/src/${metadata.thumbnail}.png`;
+                t.ok(frontmatter.thumbnail, 'has thumbnail');
+                const imagePathSrc = `./docs/img/src/${frontmatter.thumbnail}.png`;
                 t.ok(
                     fs.existsSync(imagePathSrc),
                     `example must have an image located at: ${imagePathSrc}`
                 );
-
                 t.end();
             });
         }
         test(`Example content: ${example}`, (t) => {
-            const viewport = file.match(
+            const hasExampleComponent = content.match(
                 /{{{\s?<Example html={html} {...this.props}\s?|\/>\s?}}/gim
             );
             t.ok(
-                viewport,
+                hasExampleComponent,
                 `Content must include: {{ <Example html={html} {...this.props} /> }}`
             );
+            const hasLink = content.match(/\[([^[]+)\](\(.*\))/gm);
+            t.ok(hasLink, `Content must include a link`);
             t.end();
         });
     });

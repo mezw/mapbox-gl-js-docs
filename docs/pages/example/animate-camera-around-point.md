@@ -15,6 +15,6 @@ prependJs:
 - "import html from './animate-camera-around-point.html';"
 ---
 
-Animate the map camera around a point.
+This example uses [`rotateTo`](/mapbox-gl-js/api/map/#map#rotateto) and the [`interpolate`](/mapbox-gl-js/style-spec/expressions/#interpolate) expression operator to animate the map camera around a point.
 
 {{ <Example html={html} {...this.props} /> }}

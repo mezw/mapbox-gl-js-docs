@@ -9,14 +9,15 @@
     map.on('styleimagemissing', function (e) {
         var id = e.id; // id of the missing image
 
-        // check if this missing icon is one this function can generate
+        // Check if this missing icon is
+        // one this function can generate.
         var prefix = 'square-rgb-';
         if (id.indexOf(prefix) !== 0) return;
 
-        // extract the color from the id
+        // Get the color from the id.
         var rgb = id.replace(prefix, '').split(',').map(Number);
 
-        var width = 64; // The image will be 64 pixels square
+        var width = 64; // The image will be 64 pixels square.
         var bytesPerPixel = 4; // Each pixel is represented by 4 bytes: red, green, blue, and alpha.
         var data = new Uint8Array(width * width * bytesPerPixel);
 

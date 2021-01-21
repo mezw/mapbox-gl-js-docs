@@ -15,6 +15,8 @@ prependJs:
 - "import html from './map-tiles.html';"
 ---
 
-Add a third-party raster source to the map.
+This example adds third-party raster tiles to a map by defining a custom style.
+
+The [style](https://docs.mapbox.com/help/glossary/style/) defines a [`raster` source](/mapbox-gl-js/style-spec/sources/#raster) with an external URL for the `tiles` parameter. The source is used by [`raster` layer](/mapbox-gl-js/style-spec/layers/#raster).
 
 {{ <Example html={html} {...this.props} /> }}

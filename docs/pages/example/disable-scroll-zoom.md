@@ -15,6 +15,6 @@ prependJs:
 - "import html from './disable-scroll-zoom.html';"
 ---
 
-Disable scroll zoom to prevent scroll from zooming a map.
+This example uses [`scrollZoom.disable`](/mapbox-gl-js/api/handlers/#scrollzoomhandler#disable) to prevent a user's scroll interactions from zooming a map.
 
 {{ <Example html={html} {...this.props} /> }}

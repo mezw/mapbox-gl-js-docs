@@ -17,6 +17,6 @@ prependJs:
 - "import html from './toggle-worldviews.html';"
 ---
 
-Use the `worldview` value to adjust administrative boundaries based on the map's audience. Read more about [worldviews](https://docs.mapbox.com/help/glossary/worldview/).
+This example uses the `worldview` value to adjust administrative boundaries based on the map's audience. Read more about [worldviews](https://docs.mapbox.com/help/glossary/worldview/).
 
 {{ <Example html={html} {...this.props} /> }}

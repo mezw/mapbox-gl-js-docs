@@ -16,6 +16,6 @@ prependJs:
 - "import html from './add-image-generated.html';"
 ---
 
-Add an icon to the map that was generated at runtime.
+This example uses [`addImage`](/mapbox-gl-js/api/map/#map#addimage) to generate an icon at runtime and add it to a map style. Then it adds the icon to the map by including the `'layout': {'icon-image': 'gradient'}` statement inside [`addLayer`](/mapbox-gl-js/api/map/#map#addlayer).
 
 {{ <Example html={html} {...this.props} /> }}

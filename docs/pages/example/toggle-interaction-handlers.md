@@ -15,6 +15,8 @@ prependJs:
 - "import html from './toggle-interaction-handlers.html';"
 ---
 
-Enable or disable UI handlers on a map.
+This example adds an interface to enable and disable seven different map user interactions: `scrollZoom`, `boxZoom`, `dragRotate`, `dragPan`, `keyboard`, `doubleClickZoom`, and `touchZoomRotate`.
+
+You can use [user interaction handlers](/mapbox-gl-js/api/handlers/) to control how a map object responds to user input.
 
 {{ <Example html={html} {...this.props} /> }}
