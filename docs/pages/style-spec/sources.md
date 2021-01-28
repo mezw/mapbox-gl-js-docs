@@ -12,17 +12,24 @@ prependJs:
     - "import { sourceTypes } from '../../data/types';"
     - "import SDKSupportTable from '../../components/sdk_support_table';"
     - "import ref from '@mapbox/mapbox-gl-style-spec/reference/latest';"
+    - "import Note from '@mapbox/dr-ui/note';"
 ---
 
 <!--copyeditor disable basic-->
 <!--copyeditor disable js-->
 <!--copyeditor disable ios-->
 <!--copyeditor disable macos-->
-Sources state which data the map should display. Specify the type of source with the `"type"` property, which must be one of {{sourceTypes.map((t, i) => {
+A map or layer **source** states which data the map should display. Specify the type of source with the `"type"` property, which must be one of {{sourceTypes.map((t, i) => {
     return <var key={i}>{t}</var>;
 }).reduce((prev, curr) => {
     return [prev, ', ', curr]
-})}}. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.
+})}}. 
+
+A [source](https://docs.mapbox.com/help/glossary/source) provides map data that Mapbox GL JS can use with a [style](https://docs.mapbox.com/help/glossary/style) document to render a visual representation of that data. This delegation makes it possible to style the same source in different ways, as you might do to differentiate the appearances of different types of roads in a highways layer.
+
+{{ <Note title="Specify a style"><p>Adding a source to a map or layer isn't enough to make data appear on the map. You must also specify a style to provide properties like color or width for each feature.</p></Note> }}
+
+## Tiled sources
 
 Tiled sources (vector and raster) must specify their details according to the [TileJSON specification](https://github.com/mapbox/tilejson-spec). There are several ways to do so:
 
