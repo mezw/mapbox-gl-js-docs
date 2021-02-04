@@ -87,11 +87,9 @@ module.exports = () => {
                 buildNavigation({ siteBasePath, data, addPages }),
             filters: (data) => buildFilters(data)
         },
-        devBrowserslist: false,
+        includePromisePolyfill: false,
         babelInclude: [
-            'documentation',
-            '@mapbox/mapbox-gl-style-spec',
-            'fuse.js'
+            '@mapbox/mapbox-gl-style-spec' // (removes flow)
         ],
         webpackStaticIgnore: [/util\/util\.js$/]
     };

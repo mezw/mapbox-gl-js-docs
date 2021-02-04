@@ -3,9 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import urls from './urls';
-import supported from '@mapbox/mapbox-gl-supported';
+import MapWrapper from '@mapbox/dr-ui/map-wrapper';
 import CodeSnippet from '@mapbox/dr-ui/code-snippet';
-import Note from '@mapbox/dr-ui/note';
 import { highlightHtml } from '@mapbox/dr-ui/highlight/html';
 import * as helpers from '@mapbox/dr-ui/edit/helpers';
 
@@ -13,7 +12,17 @@ const viewport = `<meta name="viewport" content="initial-scale=1,maximum-scale=1
 const css = `\tbody { margin: 0; padding: 0; }
 \t#map { position: absolute; top: 0; bottom: 0; width: 100%; }`;
 
-export default class Example extends React.Component {
+export default class ExampleWrapper extends React.Component {
+    render() {
+        return (
+            <MapWrapper height={400}>
+                <Example {...this.props} />
+            </MapWrapper>
+        );
+    }
+}
+
+class Example extends React.Component {
     static defaultProps = {
         displaySnippet: true,
         height: 400
@@ -21,8 +30,7 @@ export default class Example extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            token: undefined,
-            unsupported: false
+            token: undefined
         };
     }
 
@@ -125,38 +133,18 @@ if (window.map instanceof mapboxgl.Map) {
 
         return (
             <div className="prose">
-                {this.state.unsupported && (
-                    <Note title="Mapbox GL unsupported" theme="warning">
-                        Mapbox GL requires{' '}
-                        <a
-                            className="link"
-                            href="https://caniuse.com/#feat=webgl"
-                        >
-                            WebGL support
-                        </a>
-                        . Please check that you are using a supported browser
-                        and that{' '}
-                        <a className="link" href="https://get.webgl.org/">
-                            WebGL is enabled
-                        </a>
-                        .
-                    </Note>
-                )}
-
-                {supported() && (
-                    <iframe
-                        id="demo"
-                        style={{ height: height }}
-                        className="w-full mt18"
-                        allowFullScreen={true}
-                        mozallowfullscreen="true"
-                        webkitallowfullscreen="true"
-                        ref={(iframe) => {
-                            this.iframe = iframe;
-                        }}
-                        title={`${frontMatter.title} example`}
-                    />
-                )}
+                <iframe
+                    id="demo"
+                    style={{ height: height }}
+                    className="w-full mt18"
+                    allowFullScreen={true}
+                    mozallowfullscreen="true"
+                    webkitallowfullscreen="true"
+                    ref={(iframe) => {
+                        this.iframe = iframe;
+                    }}
+                    title={`${frontMatter.title} example`}
+                />
 
                 {this.props.displaySnippet && this.renderSnippet()}
             </div>
@@ -164,8 +152,6 @@ if (window.map instanceof mapboxgl.Map) {
     }
 
     componentDidMount() {
-        if (!supported()) this.setState({ unsupported: true });
-
         if (!this.iframe) return;
         const doc = this.iframe.contentWindow.document;
         doc.open();
