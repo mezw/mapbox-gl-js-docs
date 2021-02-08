@@ -1,5 +1,5 @@
 ---
-title: Display a map
+title: Display a map on a webpage
 description: Initialize a map in an HTML element with Mapbox GL JS.
 topics:
   - Getting started
@@ -18,6 +18,8 @@ prependJs:
 
 This example uses [`mapboxgl.Map`](/mapbox-gl-js/api/map) to initialize a Mapbox map inside an HTML element on a webpage.
 
-You can use [`map` properties](/mapbox-gl-js/api/map/#map-parameters) such as `style`, `center`, and `zoom` to define the initial appearance of the map.
+You can use the [`map` parameters](/mapbox-gl-js/api/map/#map-parameters) `style`, `center`, and `zoom` to define the initial appearance of the map.
+
+The string value for `accessToken` should be a valid [access token](/help/glossary/access-token/) from a Mapbox user account.
 
 {{ <Example html={html} {...this.props} /> }}

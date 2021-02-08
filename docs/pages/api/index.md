@@ -31,7 +31,6 @@ overviewHeader:
 
 Mapbox GL JS is a JavaScript library that uses WebGL to render interactive maps from [vector tiles](https://docs.mapbox.com/help/glossary/vector-tiles/) and [Mapbox styles](/mapbox-gl-js/style-spec/). It is part of the Mapbox GL ecosystem, which includes [Mapbox Mobile](https://www.mapbox.com/mobile/), a compatible renderer written in C++ with bindings for desktop and mobile platforms.
 
-
 ## Quickstart
 
 {{
@@ -53,6 +52,9 @@ To get started, you need an [access token](https://docs.mapbox.com/help/how-mapb
 <Quickstart />
 }}
 
+You can see and interact with similar code in these Mapbox GL JS examples:
+* [Display a map on a webpage](/mapbox-gl-js/example/simple-map/)
+* [Display a satellite map on a webpage](/mapbox-gl-js/example/satellite-map/)
 
 ## Reading this documentation
 
@@ -140,8 +142,8 @@ import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'; //
 
 mapboxgl.workerClass = MapboxWorker; // Wire up loaded worker to be used instead of the default
 let map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+    container: 'map', // container ID
+     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [-74.5, 40], // starting position [lng, lat]
     zoom: 9 // starting zoom
 });
@@ -170,8 +172,8 @@ import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker';
 
 mapboxgl.workerClass = MapboxWorker;
 let map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [-74.5, 40], // starting position [lng, lat]
     zoom: 9 // starting zoom
 });
