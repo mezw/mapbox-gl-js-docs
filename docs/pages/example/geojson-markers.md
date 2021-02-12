@@ -1,5 +1,5 @@
 ---
-title: Draw GeoJSON points
+title: Add markers to a web map with a symbol layer
 description: Draw points from a GeoJSON collection to a map.
 topics:
   - Layers

@@ -1,6 +1,6 @@
 ---
-title: Add a default marker
-description: Add a default marker to the map.
+title: Add a default marker to a web map
+description: Add a marker to a map using the default Marker method in Mapbox GL JS.
 topics:
   - Styles
 thumbnail: add-a-marker
