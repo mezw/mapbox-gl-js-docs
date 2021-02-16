@@ -118,12 +118,9 @@
             markersOnScreen = newMarkers;
         }
 
-        // after the GeoJSON data is loaded, update markers on the screen and do so on every map move/moveend
-        map.on('data', function (e) {
-            if (e.sourceId !== 'earthquakes' || !e.isSourceLoaded) return;
-
-            map.on('move', updateMarkers);
-            map.on('moveend', updateMarkers);
+        // after the GeoJSON data is loaded, update markers on the screen on every frame
+        map.on('render', function () {
+            if (map.isSourceLoaded('earthquakes')) return;
             updateMarkers();
         });
     });
