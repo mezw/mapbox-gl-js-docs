@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './measure.html';"
+- "import html from './measure.html?code';"
+- "import iframe from './measure.html?iframe';"
 ---
 
 Click points on a map to create lines that measure distanced using [turf.length](https://turfjs.org/docs/#length).
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

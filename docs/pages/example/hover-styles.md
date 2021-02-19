@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './hover-styles.html';"
+- "import html from './hover-styles.html?code';"
+- "import iframe from './hover-styles.html?iframe';"
 ---
 
 Use events and [feature states](/mapbox-gl-js/api/#map#setfeaturestate) to create a per feature hover effect.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

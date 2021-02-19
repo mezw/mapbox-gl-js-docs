@@ -12,11 +12,12 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './fullscreen.html';"
+- "import html from './fullscreen.html?code';"
+- "import iframe from './fullscreen.html?iframe';"
 ---
 
 This example adds a clickable map control that enables a user to toggle fullscreen mode on and off.
 
 It uses [`addControl`](/mapbox-gl-js/api/map/#map#addcontrol) with [`FullscreenControl`](/mapbox-gl-js/api/markers/#fullscreencontrol) to add the button overlay on the map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

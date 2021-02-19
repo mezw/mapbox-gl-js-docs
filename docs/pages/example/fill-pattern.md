@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './fill-pattern.html';"
+- "import html from './fill-pattern.html?code';"
+- "import iframe from './fill-pattern.html?iframe';"
 ---
 
 Use [`fill-pattern`](/mapbox-gl-js/style-spec/layers/#paint-fill-fill-pattern) to draw a polygon from a repeating image pattern.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

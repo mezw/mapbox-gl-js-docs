@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './fitbounds.html';"
+- "import html from './fitbounds.html?code';"
+- "import iframe from './fitbounds.html?iframe';"
 ---
 
 Use [`fitBounds`](/mapbox-gl-js/api/map/#map#fitbounds) to show a specific area of the map in view, regardless of the pixel size of the map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

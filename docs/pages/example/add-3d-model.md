@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './add-3d-model.html';"
+- "import html from './add-3d-model.html?code';"
+- "import iframe from './add-3d-model.html?iframe';"
 ---
 
 Use a [custom style layer](/mapbox-gl-js/api/#customlayerinterface) with [three.js](https://threejs.org) to add a 3D model to the map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

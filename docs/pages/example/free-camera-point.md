@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './free-camera-point.html';"
+- "import html from './free-camera-point.html?code';"
+- "import iframe from './free-camera-point.html?iframe';"
 ---
 
 Use the [`FreeCamera` API](/mapbox-gl-js/api/properties/#freecameraoptions) to create a fly-over animation focused on a point.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './offset-vanishing-point-with-padding.html';"
+- "import html from './offset-vanishing-point-with-padding.html?code';"
+- "import iframe from './offset-vanishing-point-with-padding.html?iframe';"
 ---
 
 Offset the center or [vanishing point](https://en.wikipedia.org/wiki/Vanishing_point) of the map to reduce distortion when floating elements are displayed over the map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './color-switcher.html';"
+- "import html from './color-switcher.html?code';"
+- "import iframe from './color-switcher.html?iframe';"
 ---
 
 Use [`setPaintProperty`](/mapbox-gl-js/api/map/#map#setpaintproperty) to change a layer's fill color.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

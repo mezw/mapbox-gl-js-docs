@@ -13,11 +13,12 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './add-image-missing-generated.html';"
+- "import html from './add-image-missing-generated.html?code';"
+- "import iframe from './add-image-missing-generated.html?iframe';"
 ---
 
 This example uses [`addLayer`](/mapbox-gl-js/api/map/#map#addlayer) to add a layer to a [style](https://docs.mapbox.com/help/glossary/style/), but it references an image that does not exist in the style's [sprite](https://docs.mapbox.com/help/glossary/sprite) or list of available images. Since the image is missing, the property that references the image throws a [`styleimagemissing`](/mapbox-gl-js/api/map/#map.event:styleimagemissing) event.
 
 This example uses that `styleimagemissing` event to detect the missing image, then it generates a new image and adds that image to the map style with [`addImage`](/mapbox-gl-js/api/map/#map#addimage) within the event listener callback to make sure that an icon is rendered even if the referenced image is missing.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const mapboxAssembly = require('@mapbox/mbx-assembly');
 const path = require('path');
+const posthtml = require('posthtml');
 const apiNavigation = require('./docs/data/api-navigation');
 const { buildApiSearch } = require('./docs/util/build-api-search');
 const {
@@ -10,6 +11,11 @@ const {
     buildNavigation,
     buildFilters
 } = require('@mapbox/dr-ui/helpers/batfish/index.js');
+const {
+    renderIframe,
+    renderCopiableCode
+} = require('./docs/components/example-utils.js');
+const { productionToken } = require('./scripts/mapbox-shell-token.js');
 
 const addPages = [
     {
@@ -32,7 +38,6 @@ module.exports = () => {
         siteOrigin: 'https://docs.mapbox.com',
         pagesDirectory: `${__dirname}/docs/pages`,
         outputDirectory: path.join(__dirname, '_site'),
-        browserslist: mapboxAssembly.browsersList,
         postcssPlugins: mapboxAssembly.postcssPipeline.plugins,
         productionDevtool: 'source-map',
         stylesheets: [
@@ -44,10 +49,72 @@ module.exports = () => {
         ],
         applicationWrapperPath: `${__dirname}/docs/components/application-wrapper.js`,
         webpackLoaders: [
-            // Use raw loader to get the HTML string contents of examples
+            /* 
+            This loader is responsible for generating:
+              1. The copiable code for each example. 
+              2. The iframe demo for each code example.
+            */
             {
                 test: /\.html$/,
-                use: 'raw-loader'
+                oneOf: [
+                    /* generates the example's copiable code  */
+                    {
+                        resourceQuery: /code/, // example: simple-map.html?code
+                        use: [
+                            {
+                                loader: 'html-loader',
+                                options: {
+                                    minimize: false,
+                                    preprocessor: (content, loaderContext) => {
+                                        let result;
+                                        try {
+                                            result = posthtml().process(
+                                                renderCopiableCode(content),
+                                                { sync: true }
+                                            );
+                                        } catch (error) {
+                                            loaderContext.emitError(error);
+                                            return content;
+                                        }
+                                        return result.html;
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    /* generates the example's iframe demo */
+                    {
+                        resourceQuery: /iframe/, // example: simple-map.html?iframe
+                        use: [
+                            // name the iframe file
+                            'file-loader?name=[name]-demo.[ext]',
+                            'extract-loader',
+                            // wrap the html snippet in HTML document and add Mapbox token
+                            {
+                                loader: 'html-loader',
+                                options: {
+                                    minimize: true,
+                                    preprocessor: (content, loaderContext) => {
+                                        let result;
+                                        try {
+                                            result = posthtml().process(
+                                                renderIframe(
+                                                    content,
+                                                    productionToken
+                                                ),
+                                                { sync: true }
+                                            );
+                                        } catch (error) {
+                                            loaderContext.emitError(error);
+                                            return content;
+                                        }
+                                        return result.html;
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 test: /@mapbox\/mapbox-gl-style-spec\/expression\/definitions\/index.js$/,

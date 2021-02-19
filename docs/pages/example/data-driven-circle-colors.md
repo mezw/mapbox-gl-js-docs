@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './data-driven-circle-colors.html';"
+- "import html from './data-driven-circle-colors.html?code';"
+- "import iframe from './data-driven-circle-colors.html?iframe';"
 ---
 
 Create a visualization with a data expression for [`circle-color`](/mapbox-gl-js/style-spec/layers/#paint-circle-circle-color).
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

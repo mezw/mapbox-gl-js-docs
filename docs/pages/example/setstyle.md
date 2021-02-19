@@ -13,11 +13,12 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './setstyle.html';"
+- "import html from './setstyle.html?code';"
+- "import iframe from './setstyle.html?iframe';"
 ---
 
 This example adds a clickable interface that enables a user to apply a different style to a map.
 
 When the user clicks a style name in the interface, it uses [`setstyle`](/mapbox-gl-js/api/map/#map#setstyle) to redraw the map using the [style URL](https://docs.mapbox.com/help/glossary/style-url/) associated with that option.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

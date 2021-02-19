@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './change-building-color-based-on-zoom-level.html';"
+- "import html from './change-building-color-based-on-zoom-level.html?code';"
+- "import iframe from './change-building-color-based-on-zoom-level.html?iframe';"
 ---
 
 Use the [`interpolate` expression](/mapbox-gl-js/style-spec/expressions/#interpolate) to ease-in the building layer and smoothly fade from one color to the next.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

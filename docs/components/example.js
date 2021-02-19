@@ -2,31 +2,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import urls from './urls';
 import MapWrapper from '@mapbox/dr-ui/map-wrapper';
 import CodeSnippet from '@mapbox/dr-ui/code-snippet';
 import { highlightHtml } from '@mapbox/dr-ui/highlight/html';
 import * as helpers from '@mapbox/dr-ui/edit/helpers';
 
-const viewport = `<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />`;
-const css = `\tbody { margin: 0; padding: 0; }
-\t#map { position: absolute; top: 0; bottom: 0; width: 100%; }`;
+const { viewport } = require('./example-utils');
 
-export default class ExampleWrapper extends React.Component {
-    render() {
-        return (
-            <MapWrapper height={400}>
-                <Example {...this.props} />
-            </MapWrapper>
-        );
-    }
-}
-
-class Example extends React.Component {
-    static defaultProps = {
-        displaySnippet: true,
-        height: 400
-    };
+export default class ExampleWrapper extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,9 +17,15 @@ class Example extends React.Component {
         };
     }
 
-    // Display HTML with production URLs and the logged-in user's access token (if available).
-    // Render HTML with possibly-local URLs and a Mapbox access token (don't bill the user for looking at examples).
+    componentDidMount() {
+        MapboxPageShell.afterUserCheck(() => {
+            this.setState({
+                token: MapboxPageShell.getUserPublicAccessToken()
+            });
+        });
+    }
 
+    // Add a Mapbox access token (don't bill the user for looking at examples).
     addToken(html) {
         const addMissingTokenComment = this.state.token
             ? ''
@@ -50,66 +39,19 @@ class Example extends React.Component {
         );
     }
 
-    displayHTML(html) {
-        return `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<title>${this.props.frontMatter.title}</title>
-${viewport}
-<script src="${urls.js()}"></script>
-<link href="${urls.css()}" rel="stylesheet" />
-<style>
-${css}
-</style>
-</head>
-<body>
-${this.addToken(html)}
-</body>
-</html>`;
-    }
-
-    renderHTML(html) {
-        return `<!DOCTYPE html>
-<html>
-<head>
-<meta charset=utf-8 />
-<title>${this.props.frontMatter.title}</title>
-${viewport}
-<script src='https://js.sentry-cdn.com/b4e18cb1943f46289f67ca6a771bd341.min.js' crossorigin="anonymous"></script>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-instrumentile/v3.0.0/mapbox-gl-instrumentile.js' crossorigin="anonymous"></script>
-
-<script src='${urls.js({ local: true })}'></script>
-<link href='${urls.css({ local: true })}' rel='stylesheet' />
-<style>
-    ${css}
-</style>
-<script>mapboxgl.accessToken = '${MapboxPageShell.getMapboxAccessToken()}'</script>
-</head>
-<body>
-${html}
-</body>
-<script>
-if (window.map instanceof mapboxgl.Map) {
-    var i = new instrumentile(map, {
-        token: '${MapboxPageShell.getMapboxAccessToken()}',
-        api: 'https://api.tiles.mapbox.com',
-        source: 'docs-examples'
-    });
-}
-</script>
-</html>`;
-    }
-
     renderSnippet() {
-        const { html, location } = this.props;
-        const code = this.displayHTML(html);
+        const { html, location, frontMatter } = this.props;
+        // add token and title to copiable code snippet
+        const code = this.addToken(html).replace(
+            '<title></title>',
+            `<title>${frontMatter.title}</title>`
+        );
         const parsedCode = helpers.extractor(code);
         return (
-            <div className="bg-white">
+            <div className="bg-white mt6">
                 <div id="code" className="relative">
                     <CodeSnippet
-                        code={this.displayHTML(html)}
+                        code={code}
                         highlighter={() => highlightHtml}
                         edit={{
                             frontMatter: {
@@ -127,47 +69,21 @@ if (window.map instanceof mapboxgl.Map) {
             </div>
         );
     }
-
     render() {
-        const { frontMatter, height } = this.props;
-
+        const { displaySnippet } = this.props;
         return (
-            <div className="prose">
-                <iframe
-                    id="demo"
-                    style={{ height: height }}
-                    className="w-full mt18"
-                    allowFullScreen={true}
-                    mozallowfullscreen="true"
-                    webkitallowfullscreen="true"
-                    ref={(iframe) => {
-                        this.iframe = iframe;
-                    }}
-                    title={`${frontMatter.title} example`}
-                />
-
-                {this.props.displaySnippet && this.renderSnippet()}
+            <div className="prose mt18">
+                <MapWrapper height={this.props.height}>
+                    <Example {...this.props} />
+                </MapWrapper>
+                {displaySnippet && this.renderSnippet()}
             </div>
         );
     }
-
-    componentDidMount() {
-        if (!this.iframe) return;
-        const doc = this.iframe.contentWindow.document;
-        doc.open();
-        doc.write(this.renderHTML(this.props.html));
-        doc.close();
-
-        MapboxPageShell.afterUserCheck(() => {
-            this.setState({
-                token: MapboxPageShell.getUserPublicAccessToken()
-            });
-        });
-    }
 }
 
-Example.propTypes = {
-    html: PropTypes.string, // eslint-disable-line
+ExampleWrapper.propTypes = {
+    html: PropTypes.string,
     frontMatter: PropTypes.shape({
         title: PropTypes.string.isRequired
     }),
@@ -175,5 +91,36 @@ Example.propTypes = {
         pathname: PropTypes.string
     }),
     displaySnippet: PropTypes.bool,
-    height: PropTypes.number
+    height: PropTypes.number,
+    iframeSrc: PropTypes.string
+};
+
+ExampleWrapper.defaultProps = {
+    displaySnippet: true,
+    height: 400
+};
+
+function Example(props) {
+    const { height, iframeSrc, frontMatter } = props;
+    return (
+        <iframe
+            id="demo"
+            height={height}
+            className="w-full block"
+            allowFullScreen={true}
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            src={iframeSrc}
+            loading="lazy"
+            title={`${frontMatter.title} example`}
+        />
+    );
+}
+
+Example.propTypes = {
+    frontMatter: PropTypes.shape({
+        title: PropTypes.string.isRequired
+    }),
+    height: PropTypes.number,
+    iframeSrc: PropTypes.string
 };

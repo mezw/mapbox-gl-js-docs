@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './adjust-layer-opacity.html';"
+- "import html from './adjust-layer-opacity.html?code';"
+- "import iframe from './adjust-layer-opacity.html?iframe';"
 ---
 
 Drag the range slider to adjust the opacity of a [raster layer](/mapbox-gl-js/style-spec/#layers-raster) on top of a map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

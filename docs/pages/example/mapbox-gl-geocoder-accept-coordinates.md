@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './mapbox-gl-geocoder-accept-coordinates.html';"
+- "import html from './mapbox-gl-geocoder-accept-coordinates.html?code';"
+- "import iframe from './mapbox-gl-geocoder-accept-coordinates.html?iframe';"
 ---
 
 Use the [mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) control to search for places using Mapbox Geocoding API and accept geographic coordinates.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

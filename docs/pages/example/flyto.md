@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './flyto.html';"
+- "import html from './flyto.html?code';"
+- "import iframe from './flyto.html?iframe';"
 ---
 
 Use [`flyTo`](/mapbox-gl-js/api/map/#map#flyto) to smoothly interpolate between locations.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

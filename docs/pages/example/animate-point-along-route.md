@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './animate-point-along-route.html';"
+- "import html from './animate-point-along-route.html?code';"
+- "import iframe from './animate-point-along-route.html?iframe';"
 ---
 
 Use [Turf](http://turfjs.org/) to smoothly animate a point along the distance of a line.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

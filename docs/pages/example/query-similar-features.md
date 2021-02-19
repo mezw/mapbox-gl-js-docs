@@ -12,7 +12,8 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './query-similar-features.html';"
+- "import html from './query-similar-features.html?code';"
+- "import iframe from './query-similar-features.html?iframe';"
 ---
 
 In this example, a user can hover their cursor over any county in the United States, and the map highlights other U.S. counties with a matching name, displays a popup with the name of the county at the cursor location, and displays an HTML overlay with summary information.
@@ -21,4 +22,4 @@ The example first uses [`addSource`](/mapbox-gl-js/api/map/#map#addsource) to ad
 
 To add interactivity, the example uses [`mousemove`](/mapbox-gl-js/api/map/#map.event:mousemove) to get the first county feature that the mouse is now over. Then it uses [`querySourceFeatures`](/mapbox-gl-js/api/map/#map#querysourcefeatures) to create a list of county features that match the name of the current county. Then it uses that list to get the total population and create the overlay. To create the illusion of highlighted polygons, it uses [`setFilter`](/mapbox-gl-js/api/map/#map#setfilter) to update the filter that is applied to the highlighted layer, allowing the matching counties to be visible.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

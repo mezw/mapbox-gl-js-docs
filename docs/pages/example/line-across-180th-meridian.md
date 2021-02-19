@@ -13,9 +13,10 @@ products:
 thumbnail: line-across-180th-meridian
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './line-across-180th-meridian.html';"
+- "import html from './line-across-180th-meridian.html?code';"
+- "import iframe from './line-across-180th-meridian.html?iframe';"
 ---
 
 Draw a line across the 180th meridian using a [GeoJSON source](/mapbox-gl-js/style-spec/sources/#geojson).
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

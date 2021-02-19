@@ -12,7 +12,8 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './dancing-buildings.html';"
+- "import html from './dancing-buildings.html?code';"
+- "import iframe from './dancing-buildings.html?iframe';"
 ---
 
 This example uses [runtime styling](https://docs.mapbox.com/help/glossary/runtime-styling/) with the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) to create a map where the 3D buildings dynamically change height to the rhythm of your ambient environment, giving the appearance of dancing.
@@ -21,4 +22,4 @@ It uses [`getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaD
 
 To optimize performance, it uses the [`==`](/mapbox-gl-js/style-spec/expressions/#==), [`>`](/mapbox-gl-js/style-spec/expressions/#%3E) and [`<=`](/mapbox-gl-js/style-spec/expressions/#%3C=) expression operators to filter buildings in the layer based on their height data.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

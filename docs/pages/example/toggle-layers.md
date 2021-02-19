@@ -12,11 +12,12 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './toggle-layers.html';"
+- "import html from './toggle-layers.html?code';"
+- "import iframe from './toggle-layers.html?iframe';"
 ---
 
 This example adds a clickable interface that allows a user to enable and disable two different map layers.
 
 The interface uses [`setLayoutProperty`](/mapbox-gl-js/api/map/#map#setlayoutproperty) to toggle the value for each layer's [`visibility`](/mapbox-gl-js/style-spec/layers/) property between `visible` and `none`.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

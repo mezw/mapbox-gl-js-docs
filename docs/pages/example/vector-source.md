@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './vector-source.html';"
+- "import html from './vector-source.html?code';"
+- "import iframe from './vector-source.html?iframe';"
 ---
 
 Add a [vector source](/mapbox-gl-js/style-spec/sources/#vector) to a map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

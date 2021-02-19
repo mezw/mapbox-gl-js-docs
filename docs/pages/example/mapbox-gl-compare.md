@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './mapbox-gl-compare.html';"
+- "import html from './mapbox-gl-compare.html?code';"
+- "import iframe from './mapbox-gl-compare.html?iframe';"
 ---
 
 Use [mapbox-gl-compare](https://github.com/mapbox/mapbox-gl-compare) to swipe between and synchronize two maps.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

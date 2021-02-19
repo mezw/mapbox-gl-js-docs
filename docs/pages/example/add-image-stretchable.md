@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './add-image-stretchable.html';"
+- "import html from './add-image-stretchable.html?code';"
+- "import iframe from './add-image-stretchable.html?iframe';"
 ---
 
 This example uses a stretchable image as a background for text. Stretchable images allow some parts of the image to stretch while keeping other parts, such as corners, at a constant size. Set the `layout` property [`'icon-text-fit': 'both'`](/mapbox-gl-js/style-spec/layers/#layout-symbol-icon-text-fit) to use the image as background for the text.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

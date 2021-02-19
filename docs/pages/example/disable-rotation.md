@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './disable-rotation.html';"
+- "import html from './disable-rotation.html?code';"
+- "import iframe from './disable-rotation.html?iframe';"
 ---
 
 This example uses [`DragRotateHandler#disable`](/mapbox-gl-js/api/handlers/#dragrotatehandler) and [`TouchZoomRotateHandler#disableRotation`](/mapbox-gl-js/api/handlers/#touchzoomrotatehandler) to prevent a user's drag and touch interactions from rotating a map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

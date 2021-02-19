@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './add-a-marker.html';"
+- "import html from './add-a-marker.html?code';"
+- "import iframe from './add-a-marker.html?iframe';"
 ---
 
 Add a default [`Marker`](/mapbox-gl-js/api/markers/#marker) to the map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

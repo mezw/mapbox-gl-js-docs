@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './display-and-style-rich-text-labels.html';"
+- "import html from './display-and-style-rich-text-labels.html?code';"
+- "import iframe from './display-and-style-rich-text-labels.html?iframe';"
 ---
 
 Use the [`format` expression](/mapbox-gl-js/style-spec/expressions/#types-format) to display country labels in both English and in the local language.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

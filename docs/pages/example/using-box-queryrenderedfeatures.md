@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './using-box-queryrenderedfeatures.html';"
+- "import html from './using-box-queryrenderedfeatures.html?code';"
+- "import iframe from './using-box-queryrenderedfeatures.html?iframe';"
 ---
 
 Hold <kbd>Shift</kbd> and drag the map to query features using [`queryRenderedFeatures`](/mapbox-gl-js/api/map/#map#queryrenderedfeatures).
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

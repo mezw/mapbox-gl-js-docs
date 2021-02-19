@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './language-switch.html';"
+- "import html from './language-switch.html?code';"
+- "import iframe from './language-switch.html?iframe';"
 ---
 
 Use [`setLayoutProperty`](/mapbox-gl-js/api/#map#setlayoutproperty) to switch languages dynamically. For a more complete solution see the [mapbox-gl-language](https://github.com/mapbox/mapbox-gl-language/) plugin.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

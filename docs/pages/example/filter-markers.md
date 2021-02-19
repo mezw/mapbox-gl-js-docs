@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './filter-markers.html';"
+- "import html from './filter-markers.html?code';"
+- "import iframe from './filter-markers.html?iframe';"
 ---
 
 Filter a set of [symbols](/mapbox-gl-js/style-spec/layers/#symbol) based on a property value in the data.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

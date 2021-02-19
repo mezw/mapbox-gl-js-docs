@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './filter-features-within-map-view.html';"
+- "import html from './filter-features-within-map-view.html?code';"
+- "import iframe from './filter-features-within-map-view.html?iframe';"
 ---
 
 This example uses [`queryRenderedFeatures`](/mapbox-gl-js/api/map/#map#queryrenderedfeatures) to restrict a list of features in a vector tile layer to only return those that are visible in the map view. 
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

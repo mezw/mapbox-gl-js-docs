@@ -13,9 +13,10 @@ products:
 - Geocoding API
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './forward-geocode-custom-data.html';"
+- "import html from './forward-geocode-custom-data.html?code';"
+- "import iframe from './forward-geocode-custom-data.html?iframe';"
 ---
 
 Use the [mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) control to search for places using Mapbox Geocoding AP and supplement results from a local data source or function. This example matches Chicago Park names with text input.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

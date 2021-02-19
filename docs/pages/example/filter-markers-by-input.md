@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './filter-markers-by-input.html';"
+- "import html from './filter-markers-by-input.html?code';"
+- "import iframe from './filter-markers-by-input.html?iframe';"
 ---
 
 Filter [symbols](/mapbox-gl-js/style-spec/layers/#symbol) by icon name by typing in a text input.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

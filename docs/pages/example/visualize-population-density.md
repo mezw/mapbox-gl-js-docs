@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './visualize-population-density.html';"
+- "import html from './visualize-population-density.html?code';"
+- "import iframe from './visualize-population-density.html?iframe';"
 ---
 
 Use a [variable binding expression](/mapbox-gl-js/style-spec/expressions/#variable-binding) to calculate and display population density.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

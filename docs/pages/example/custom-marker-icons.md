@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './custom-marker-icons.html';"
+- "import html from './custom-marker-icons.html?code';"
+- "import iframe from './custom-marker-icons.html?iframe';"
 ---
 
 Use [`Marker`](/mapbox-gl-js/api/markers/#marker) to add custom icons to your map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './wms.html';"
+- "import html from './wms.html?code';"
+- "import iframe from './wms.html?iframe';"
 ---
 
 Add an external [Web Map Service raster layer](https://www.ogc.org/standards/wms) to the map using [`addSource`](/mapbox-gl-js/api/map/#map#addsource)'s [`tiles`](/mapbox-gl-js/style-spec/sources/#raster-tiles) option.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

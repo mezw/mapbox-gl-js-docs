@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './render-world-copies.html';"
+- "import html from './render-world-copies.html?code';"
+- "import iframe from './render-world-copies.html?iframe';"
 ---
 
 Toggle between rendering a single world and multiple copies of the world using [`setRenderWorldCopies`](/mapbox-gl-js/api/map/#map#setrenderworldcopies). If `true`, multiple copies of the world will be rendered side by side beyond -180 and 180 degrees longitude.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

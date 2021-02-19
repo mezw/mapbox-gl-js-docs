@@ -13,7 +13,8 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './updating-choropleth.html';"
+- "import html from './updating-choropleth.html?code';"
+- "import iframe from './updating-choropleth.html?iframe';"
 ---
 
 This map uses 2014 U.S. Census data to create two layers. One layer contains a choropleth visualization for _state populations_, and one layer contains a choropleth visualization for _county populations_. 
@@ -22,4 +23,4 @@ The example defines a zoom level at which each layer and its respective legend s
 
 You can use [`getZoom`](/mapbox-gl-js/api/map/#map#getzoom) to use zoom values to control the appearance of other elements. 
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

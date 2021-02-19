@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './set-perspective.html';"
+- "import html from './set-perspective.html?code';"
+- "import iframe from './set-perspective.html?iframe';"
 ---
 
 Map options extend [`CameraOptions`](/mapbox-gl-js/api/#cameraoptions), so you can set more than the center and zoom. This example sets the pitch and bearing.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

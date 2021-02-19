@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './drag-a-marker.html';"
+- "import html from './drag-a-marker.html?code';"
+- "import iframe from './drag-a-marker.html?iframe';"
 ---
 
 Drag the [`Marker`](/mapbox-gl-js/api/markers/#marker) to a new location on a map and populate its coordinates in a display.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './marker-from-geocode.html';"
+- "import html from './marker-from-geocode.html?code';"
+- "import iframe from './marker-from-geocode.html?iframe';"
 ---
 
 Add a [`Marker`](/mapbox-gl-js/api/markers/#marker) using a place name or address for its location using the [forward geocoder](/api/search/geocoding/).
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

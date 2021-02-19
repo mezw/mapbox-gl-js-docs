@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './locate-user.html';"
+- "import html from './locate-user.html?code';"
+- "import iframe from './locate-user.html?iframe';"
 ---
 
 Geolocate the user and then track their current location on the map using the [`GeolocateControl`](/mapbox-gl-js/api/markers/#geolocatecontrol).
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

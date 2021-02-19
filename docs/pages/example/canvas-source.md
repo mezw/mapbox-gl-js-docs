@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './canvas-source.html';"
+- "import html from './canvas-source.html?code';"
+- "import iframe from './canvas-source.html?iframe';"
 ---
 
 Add a [`CanvasSource`](/mapbox-gl-js/api/sources/#canvassource) to the map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

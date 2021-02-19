@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './restrict-bounds.html';"
+- "import html from './restrict-bounds.html?code';"
+- "import iframe from './restrict-bounds.html?iframe';"
 ---
 
 Prevent a map from being panned to a different place by setting [`maxBounds`](/mapbox-gl-js/api/map/#map#setmaxbounds).
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

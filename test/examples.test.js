@@ -1,3 +1,4 @@
+/* eslint-disable xss/no-mixed-html */
 const test = require('tape');
 const fs = require('fs');
 const path = require('path');
@@ -73,10 +74,28 @@ listExamplesMd('./docs/pages/example/')
                 );
                 t.end();
             });
+
+            test(`Example code imports: ${example}`, (t) => {
+                const hasCodeResourseQuery =
+                    frontmatter.prependJs.filter((f) => f.includes('?code'))
+                        .length > 0;
+                t.ok(
+                    hasCodeResourseQuery,
+                    `You must use raw-loader to import the example html file in \`prependJs\`. Example: \`- "import html from './simple-map.html?code';"\``
+                );
+                const hasIframeResourceQuery = frontmatter.prependJs.filter(
+                    (f) => f.includes('?iframe').length > 0
+                );
+                t.ok(
+                    hasIframeResourceQuery,
+                    `The example must import the example file in \`prependJs\`. Example: \`- "import iframe from './simple-map.html?iframe';""\``
+                );
+                t.end();
+            });
         }
         test(`Example content: ${example}`, (t) => {
             const hasExampleComponent = content.match(
-                /{{{\s?<Example html={html} {...this.props}\s?|\/>\s?}}/gim
+                /{{{\s?<Example html={html} iframeSrc={iframe} {...this.props}\s?|\/>\s?}}/gim
             );
             t.ok(
                 hasExampleComponent,

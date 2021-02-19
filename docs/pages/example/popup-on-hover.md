@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './popup-on-hover.html';"
+- "import html from './popup-on-hover.html?code';"
+- "import iframe from './popup-on-hover.html?iframe';"
 ---
 
 When a user hovers over a custom marker, show a [`Popup`](/mapbox-gl-js/api/markers/#popup) containing more information.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

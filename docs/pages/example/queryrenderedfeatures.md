@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './queryrenderedfeatures.html';"
+- "import html from './queryrenderedfeatures.html?code';"
+- "import iframe from './queryrenderedfeatures.html?iframe';"
 ---
 
 Use [`queryRenderedFeatures`](/mapbox-gl-js/api/map/#map#queryrenderedfeatures) to show properties of hovered-over map elements.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

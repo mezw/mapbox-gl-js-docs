@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './attribution-position.html';"
+- "import html from './attribution-position.html?code';"
+- "import iframe from './attribution-position.html?iframe';"
 ---
 
 This example places the [required map attribution](https://docs.mapbox.com/help/how-mapbox-works/attribution/) in the `top-left` position of a map using [`addControl`](/mapbox-gl-js/api/map/#map#addcontrol) with [`AttributionControl`](/mapbox-gl-js/api/markers/#attributioncontrol).
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -13,7 +13,8 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './animate-a-line.html';"
+- "import html from './animate-a-line.html?code';"
+- "import iframe from './animate-a-line.html?iframe';"
 ---
 
 This example animates a line by updating a GeoJSON source on each frame.
@@ -25,4 +26,4 @@ When the animation begins, the data in the GeoJSON object changes, and the line 
 The example [Update a feature in realtime](/mapbox-gl-js/example/live-update-feature/) uses a similar approach to create an animation.
 
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

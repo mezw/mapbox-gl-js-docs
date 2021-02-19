@@ -13,9 +13,10 @@ products:
 - Mapbox Streets tileset
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './3d-buildings.html';"
+- "import iframe from './3d-buildings.html?iframe';"
+- "import html from './3d-buildings.html?code';"
 ---
 
 Use [extrusions](/mapbox-gl-js/style-spec#layers-fill-extrusion) to display buildings' height in 3D.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

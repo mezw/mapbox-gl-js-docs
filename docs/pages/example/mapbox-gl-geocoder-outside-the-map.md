@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './mapbox-gl-geocoder-outside-the-map.html';"
+- "import html from './mapbox-gl-geocoder-outside-the-map.html?code';"
+- "import iframe from './mapbox-gl-geocoder-outside-the-map.html?iframe';"
 ---
 
 Use the [mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) control to search for places using Mapbox Geocoding API attached to an element outside the map.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

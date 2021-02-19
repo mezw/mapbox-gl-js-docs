@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './mapbox-gl-geocoder-no-map.html';"
+- "import html from './mapbox-gl-geocoder-no-map.html?code';"
+- "import iframe from './mapbox-gl-geocoder-no-map.html?iframe';"
 ---
 
 Use the [mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) control to search for places using Mapbox Search API without an associated map view.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

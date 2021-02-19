@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './3d-extrusion-floorplan.html';"
+- "import html from './3d-extrusion-floorplan.html?code';"
+- "import iframe from './3d-extrusion-floorplan.html?iframe';"
 ---
 
 Create a 3D indoor map with the [`fill-extrude-height`](/mapbox-gl-js/style-spec/layers/#paint-fill-extrusion-fill-extrusion-height) paint property.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

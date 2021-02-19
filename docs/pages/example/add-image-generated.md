@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './add-image-generated.html';"
+- "import html from './add-image-generated.html?code';"
+- "import iframe from './add-image-generated.html?iframe';"
 ---
 
 This example uses [`addImage`](/mapbox-gl-js/api/map/#map#addimage) to generate an icon at runtime and add it to a map style. Then it adds the icon to the map by including the `'layout': {'icon-image': 'gradient'}` statement inside [`addLayer`](/mapbox-gl-js/api/map/#map#addlayer).
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -13,7 +13,8 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './image-on-a-map.html';"
+- "import html from './image-on-a-map.html?code';"
+- "import iframe from './image-on-a-map.html?iframe';"
 - "import * as constants from '../../constants';"
 ---
 
@@ -23,4 +24,4 @@ To create the vector map style, the example provides a JSON object to define a m
 
 To add the raster overlay, the example adds another source to the same JSON object, this time using an [`image` source](/mapbox-gl-js/style-spec/sources/#image), and adds a [`raster` layer](/mapbox-gl-js/style-spec/layers/#raster) to the JSON object.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

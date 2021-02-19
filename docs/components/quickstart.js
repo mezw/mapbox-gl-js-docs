@@ -1,7 +1,8 @@
 import React from 'react';
-import urls from './urls';
 import Copyable from './copyable';
 import ControlToggleSet from '@mapbox/mr-ui/control-toggle-set';
+
+const { urls } = require('./example-utils');
 
 class Quickstart extends React.Component {
     constructor(props) {
@@ -46,8 +47,8 @@ var map = new mapboxgl.Map(${this.mapOptions});
                     <code>&lt;head&gt;</code> of your HTML file.
                 </p>
                 <Copyable lang="markup">{`
-<script src='${urls.js()}'></script>
-<link href='${urls.css()}' rel='stylesheet' />
+<script src='${urls().js}'></script>
+<link href='${urls().css}' rel='stylesheet' />
 `}</Copyable>
 
                 <p>
@@ -77,7 +78,7 @@ npm install --save mapbox-gl
                     your HTML file.
                 </p>
                 <Copyable lang="markup">{`
-<link href='${urls.css()}' rel='stylesheet' />
+<link href='${urls().css}' rel='stylesheet' />
 `}</Copyable>
 
                 <p>

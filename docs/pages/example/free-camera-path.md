@@ -13,9 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './free-camera-path.html';"
+- "import html from './free-camera-path.html?code';"
+- "import iframe from './free-camera-path.html?iframe';"
 ---
 
 Use the [`FreeCamera` API](/mapbox-gl-js/api/properties/#freecameraoptions) to follow a path over 3D terrain.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

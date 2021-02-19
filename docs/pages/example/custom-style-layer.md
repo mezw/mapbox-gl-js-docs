@@ -12,9 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './custom-style-layer.html';"
+- "import html from './custom-style-layer.html?code';"
+- "import iframe from './custom-style-layer.html?iframe';"
 ---
 
 This example use a [custom style layer](/mapbox-gl-js/api/properties/#customlayerinterface) to render custom WebGL content.
 
-{{ <Example html={html} {...this.props} /> }}
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}
