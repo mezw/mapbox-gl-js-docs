@@ -13,15 +13,17 @@ prependJs:
 
 ---
 
-The value for any [layout property](/mapbox-gl-js/style-spec/layers/#layout-property), [paint property](/mapbox-gl-js/style-spec/layers/#paint-property), or [filter](/mapbox-gl-js/style-spec/layers/#filter) may be specified as an _expression_. An expression defines a formula for computing the value of the property using the _operators_ described below. The set of expression operators provided by Mapbox GL includes:
+You can define the value for any [layout property](/mapbox-gl-js/style-spec/layers/#layout-property), [paint property](/mapbox-gl-js/style-spec/layers/#paint-property), or [filter](/mapbox-gl-js/style-spec/layers/#filter) as an _expression_. 
 
-- Mathematical operators for performing arithmetic and other operations on numeric values
-- Logical operators for manipulating boolean values and making conditional decisions
-- String operators for manipulating strings
-- Data operators, providing access to the properties of source features
-- Camera operators, providing access to the parameters defining the current map view
+An **expression** defines a formula for computing the value of the property using the _operators_ described below. The expression operators provided by Mapbox GL include:
 
-Expressions are represented as JSON arrays. The first element of an expression array is a string naming the expression operator, e.g. [`"*"`](#*) or [`"case"`](#case). Elements that follow (if any) are the _arguments_ to the expression. Each argument is either a literal value (a string, number, boolean, or `null`), or another expression array.
+- _Mathematical operators_ for performing arithmetic and other operations on numeric values
+- _Logical operators_ for manipulating boolean values and making conditional decisions
+- _String operators_ for manipulating strings
+- _Data operators_ for providing access to the properties of source features
+- _Camera operators_ for providing access to the parameters defining the current map view
+
+Expressions are represented as JSON arrays. The first element of an expression array is a string naming the expression operator, for example [`"*"`](#*) or [`"case"`](#case). Elements that follow (if any) are the _arguments_ to the expression. Each argument is either a literal value (a string, number, boolean, or `null`), or another expression array.
 
 ```json
 [expression_name, argument_0, argument_1, ...]
@@ -33,7 +35,7 @@ Learn how to write expressions in Mapbox GL JS to style custom data based on a d
 
 ## Data expressions
 
-A _data expression_ is any expression that access feature data -- that is, any expression that uses one of the data operators: [`get`](#get), [`has`](#has), [`id`](#id), [`geometry-type`](#geometry-type), [`properties`](#properties), or [`feature-state`](#feature-state). Data expressions allow a feature's properties or state to determine its appearance. They can be used to differentiate features within the same layer and to create data visualizations.
+A **data expression** is any expression that accesses feature data – that is, any expression that uses one of the data operators: [`get`](#get), [`has`](#has), [`id`](#id), [`geometry-type`](#geometry-type), [`properties`](#properties), or [`feature-state`](#feature-state). Data expressions allow a feature's properties or state to determine its appearance. They can be used to differentiate features within the same layer and to create data visualizations.
 
 ```json
 {
@@ -55,11 +57,9 @@ This example uses the [`get`](#get) operator to get the `temperature` value of e
 <!--copyeditor ignore however-->
 Data expressions are allowed as the value of the [`filter`](/mapbox-gl-js/style-spec/layers/#filter) property, and as values for most paint and layout properties. However, some paint and layout properties do not yet support data expressions. The level of support is indicated by the "data-driven styling" row of the "SDK Support" table for each property. Data expressions with the [`feature-state`](#feature-state) operator are allowed only on paint properties.
 
-
-
 ## Camera expressions
 
-A _camera expression_ is any expression that uses the [`zoom`](#zoom) operator. Such expressions allow the appearance of a layer to change with the map's zoom level. Camera expressions can be used to create the appearance of depth and to control data density.
+A **camera expression** is any expression that uses the [`zoom`](#zoom) operator. These expressions change the appearance of a layer with the map's zoom level. Camera expressions can be used to create the appearance of depth and to control data density.
 
 ```json
 {
@@ -75,7 +75,7 @@ A _camera expression_ is any expression that uses the [`zoom`](#zoom) operator. 
 
 This example uses the [`interpolate`](#interpolate) operator to define a linear relationship between zoom level and circle size using a set of input-output pairs. In this case, the expression indicates that the circle radius should be 1 pixel when the zoom level is 5 or below, and 5 pixels when the zoom is 10 or above. Between the two zoom levels, the circle radius will be linearly interpolated between 1 and 5 pixels
 
-Camera expressions are allowed anywhere an expression may be used. When a camera expression used as the value of a layout or paint property, it must be in one of the following forms:
+You can use camera expressions anywhere an expression may be used. When you use a camera expression as the value of a layout or paint property, it must be in one of the following forms:
 
 ```json
 [ "interpolate", interpolation, ["zoom"], ... ]
@@ -109,11 +109,14 @@ Or:
 
 That is, in layout or paint properties, `["zoom"]` may appear only as the input to an outer [`interpolate`](#interpolate) or [`step`](#step) expression, or such an expression within a [`let`](#let) expression.
 
-There is an important difference between layout and paint properties in the timing of camera expression evaluation. Paint property camera expressions are re-evaluated whenever the zoom level changes, even fractionally. For example, a paint property camera expression will be re-evaluated continuously as the map moves between zoom levels 4.1 and 4.6. A _layout property_ camera expression is evaluated only at integer zoom levels. It will _not_ be re-evaluated as the zoom changes from 4.1 to 4.6 -- only if it goes above 5 or below 4.
+There is an important difference between _layout_ and _paint_ properties in the timing of camera expression evaluation:
+
+- _Paint property_ camera expressions are re-evaluated whenever the zoom level changes, even fractionally. For example, a paint property camera expression will be re-evaluated continuously as the map moves between zoom levels 4.1 and 4.6. 
+- _Layout property_ camera expressions are evaluated only at integer zoom levels. It will _not_ be re-evaluated as the zoom changes from 4.1 to 4.6 – only if it goes above 5 or below 4.
 
 ## Composition
 
-A single expression may use a mix of data operators, camera operators, and other operators. Such composite expressions allows a layer's appearance to be determined by a combination of the zoom level _and_ individual feature properties.
+A single expression can use a mix of data operators, camera operators, and other operators. Such **composite expressions** allows a layer's appearance to be determined by a combination of the zoom level _and_ individual feature properties.
 
 ```json
 {
@@ -166,7 +169,7 @@ If an expression accepts an array argument and the user supplies an array litera
 
 ## Types
 
-The expressions in this section are for testing for and converting between different data types like strings, numbers, and boolean values.
+You can use **type expressions** to test and convert between different data types like strings, numbers, and boolean values.
 
 Often, such tests and conversions are unnecessary, but they may be necessary in some expressions where the type of a certain sub-expression is ambiguous. They can also be useful in cases where your feature data has inconsistent types; for example, you could use `to-number` to make sure that values like `"1.5"` (instead of `1.5`) are treated as numeric values.
 
@@ -182,7 +185,7 @@ Often, such tests and conversions are unnecessary, but they may be necessary in 
 
 ## Decision
 
-The expressions in this section can be used to add conditional logic to your styles. For example, the [`'case'`](#case)  expression provides "if/then/else" logic, and [`'match'`](#match) allows you to map specific values of an input expression to different output expressions.
+You can use **decision expressions** to add conditional logic to your styles. For example, the [`'case'`](#case)  expression provides "if/then/else" logic, and [`'match'`](#match) allows you to map specific values of an input expression to different output expressions.
 
 {{<ExpressionReference group='Decision' />}}
 
