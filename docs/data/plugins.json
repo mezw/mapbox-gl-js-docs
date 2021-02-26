@@ -19,7 +19,7 @@
     },
     "mapbox-gl-directions": {
       "website": "https://github.com/mapbox/mapbox-gl-directions",
-      "description": "Adds a control to allow users to plot driving, walking, and cycling directions on the map.",
+      "description": "Adds a control to allow users to plot driving, walking, and cycling directions on the map. Directions API calls are [billable by request](https://docs.mapbox.com/api/navigation/directions/#directions-api-pricing).",
       "example": "mapbox-gl-directions"
     },
     "mapbox-gl-draw": {
@@ -33,7 +33,7 @@
     },
     "mapbox-gl-geocoder": {
       "website": "https://github.com/mapbox/mapbox-gl-geocoder",
-      "description": "Adds a geocoder control to Mapbox GL JS.",
+      "description": "Adds a geocoder control to Mapbox GL JS. Geocoding API calls are [billable by request](https://docs.mapbox.com/api/search/geocoding/#geocoding-api-pricing).",
       "example": "mapbox-gl-geocoder"
     },
     "mapbox-gl-infobox": {
