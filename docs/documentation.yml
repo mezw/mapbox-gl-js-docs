@@ -11,6 +11,7 @@ toc:
     children:
       - accessToken
       - baseApiUrl
+      - workerClass
       - workerCount
       - maxParallelImageRequests
       - supported

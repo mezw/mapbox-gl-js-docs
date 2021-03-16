@@ -107,6 +107,21 @@ Array [
       },
       Object {
         "level": 2,
+        "slug": "workerclass",
+        "text": "workerClass",
+      },
+      Object {
+        "level": 3,
+        "slug": "workerclass-returns",
+        "text": "Returns",
+      },
+      Object {
+        "level": 3,
+        "slug": "workerclass-example",
+        "text": "Example",
+      },
+      Object {
+        "level": 2,
         "slug": "workercount",
         "text": "workerCount",
       },
