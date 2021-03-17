@@ -158,7 +158,10 @@ module.exports = () => {
         babelInclude: [
             '@mapbox/mapbox-gl-style-spec' // (removes flow)
         ],
-        webpackStaticIgnore: [/util\/util\.js$/]
+        webpackStaticIgnore: [/util\/util\.js$/],
+        sitemap: {
+            ignoreFile: 'conf/sitemap-ignore.js'
+        }
     };
 
     // Local builds treat the `dist` directory as static assets, allowing you to test examples against the
