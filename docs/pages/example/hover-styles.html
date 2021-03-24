@@ -48,7 +48,7 @@
         // feature state for the feature under the mouse.
         map.on('mousemove', 'state-fills', function (e) {
             if (e.features.length > 0) {
-                if (hoveredStateId) {
+                if (hoveredStateId !== null) {
                     map.setFeatureState(
                         { source: 'states', id: hoveredStateId },
                         { hover: false }
@@ -65,7 +65,7 @@
         // When the mouse leaves the state-fill layer, update the feature state of the
         // previously hovered feature.
         map.on('mouseleave', 'state-fills', function () {
-            if (hoveredStateId) {
+            if (hoveredStateId !== null) {
                 map.setFeatureState(
                     { source: 'states', id: hoveredStateId },
                     { hover: false }
