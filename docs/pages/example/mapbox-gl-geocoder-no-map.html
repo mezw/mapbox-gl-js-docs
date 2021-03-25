@@ -10,15 +10,14 @@
 <style>
     #geocoder {
         z-index: 1;
-        width: 100%;
-        text-align: center;
-        top: 20px;
+        margin: 20px;
     }
     .mapboxgl-ctrl-geocoder {
         min-width: 100%;
     }
 </style>
 <div id="geocoder"></div>
+<pre id="result"></pre>
 <script>
     var geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
@@ -26,4 +25,17 @@
     });
 
     geocoder.addTo('#geocoder');
+
+    // Get the geocoder results container.
+    var results = document.getElementById('result');
+
+    // Add geocoder result to container.
+    geocoder.on('result', function (e) {
+        results.innerText = JSON.stringify(e.result, null, 2);
+    });
+
+    // Clear results container when search is cleared.
+    geocoder.on('clear', function () {
+        results.innerText = '';
+    });
 </script>
