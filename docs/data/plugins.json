@@ -27,6 +27,10 @@
       "description": "Adds support for drawing and editing features on Mapbox GL JS maps.",
       "example": "mapbox-gl-draw"
     },
+    "mapbox-gl-elevation": {
+      "website": "https://github.com/watergis/mapbox-gl-elevation",
+      "description": "Adds a control that inquiry altitude from terrain RGB tileset."
+    },
     "mapbox-gl-export": {
       "website": "https://github.com/watergis/mapbox-gl-export",
       "description": "Adds a control that exports the map as a PDF or PNG."
