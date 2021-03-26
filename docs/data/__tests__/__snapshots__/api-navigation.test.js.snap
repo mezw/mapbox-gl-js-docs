@@ -236,6 +236,11 @@ Array [
         "text": "Properties",
       },
       Object {
+        "level": 3,
+        "slug": "animationoptions-related",
+        "text": "Related",
+      },
+      Object {
         "level": 2,
         "slug": "cameraoptions",
         "text": "CameraOptions",
@@ -269,6 +274,11 @@ Array [
         "level": 3,
         "slug": "freecameraoptions-instance-members",
         "text": "Instance members",
+      },
+      Object {
+        "level": 3,
+        "slug": "freecameraoptions-related",
+        "text": "Related",
       },
       Object {
         "level": 2,
@@ -719,6 +729,11 @@ Array [
         "text": "Instance members",
       },
       Object {
+        "level": 3,
+        "slug": "boxzoomhandler-related",
+        "text": "Related",
+      },
+      Object {
         "level": 2,
         "slug": "scrollzoomhandler",
         "text": "ScrollZoomHandler",
@@ -727,6 +742,11 @@ Array [
         "level": 3,
         "slug": "scrollzoomhandler-instance-members",
         "text": "Instance members",
+      },
+      Object {
+        "level": 3,
+        "slug": "scrollzoomhandler-related",
+        "text": "Related",
       },
       Object {
         "level": 2,
@@ -739,6 +759,11 @@ Array [
         "text": "Instance members",
       },
       Object {
+        "level": 3,
+        "slug": "dragpanhandler-related",
+        "text": "Related",
+      },
+      Object {
         "level": 2,
         "slug": "dragrotatehandler",
         "text": "DragRotateHandler",
@@ -747,6 +772,11 @@ Array [
         "level": 3,
         "slug": "dragrotatehandler-instance-members",
         "text": "Instance members",
+      },
+      Object {
+        "level": 3,
+        "slug": "dragrotatehandler-related",
+        "text": "Related",
       },
       Object {
         "level": 2,
@@ -759,6 +789,11 @@ Array [
         "text": "Instance members",
       },
       Object {
+        "level": 3,
+        "slug": "keyboardhandler-related",
+        "text": "Related",
+      },
+      Object {
         "level": 2,
         "slug": "doubleclickzoomhandler",
         "text": "DoubleClickZoomHandler",
@@ -767,6 +802,11 @@ Array [
         "level": 3,
         "slug": "doubleclickzoomhandler-instance-members",
         "text": "Instance members",
+      },
+      Object {
+        "level": 3,
+        "slug": "doubleclickzoomhandler-related",
+        "text": "Related",
       },
       Object {
         "level": 2,
@@ -779,6 +819,11 @@ Array [
         "text": "Instance members",
       },
       Object {
+        "level": 3,
+        "slug": "touchzoomrotatehandler-related",
+        "text": "Related",
+      },
+      Object {
         "level": 2,
         "slug": "touchpitchhandler",
         "text": "TouchPitchHandler",
@@ -787,6 +832,11 @@ Array [
         "level": 3,
         "slug": "touchpitchhandler-instance-members",
         "text": "Instance members",
+      },
+      Object {
+        "level": 3,
+        "slug": "touchpitchhandler-related",
+        "text": "Related",
       },
     ],
     "title": "User interaction handlers",
@@ -868,6 +918,11 @@ Array [
         "level": 3,
         "slug": "canvassource-instance-members",
         "text": "Instance members",
+      },
+      Object {
+        "level": 3,
+        "slug": "canvassource-related",
+        "text": "Related",
       },
       Object {
         "level": 2,
