@@ -7,6 +7,7 @@
 <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
 <div id="map"></div>
 
 <script>
@@ -14,15 +15,16 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [-79.4512, 43.6568],
-        zoom: 13
+        zoom: 8
     });
 
-    /* given a query in the form "lng, lat" or "lat, lng" returns the matching
-     * geographic coordinate(s) as search results in carmen geojson format,
-     * https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-     */
+    /* Given a query in the form "lng, lat" or "lat, lng"
+     * returns the matching geographic coordinate(s)
+     * as search results in carmen geojson format,
+     * https://github.com/mapbox/carmen/blob/master/carmen-geojson.md */
     var coordinatesGeocoder = function (query) {
-        // match anything which looks like a decimal degrees coordinate pair
+        // Match anything which looks like
+        // decimal degrees coordinate pair.
         var matches = query.match(
             /^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
         );
@@ -67,6 +69,7 @@
         return geocodes;
     };
 
+    // Add the control to the map.
     map.addControl(
         new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,

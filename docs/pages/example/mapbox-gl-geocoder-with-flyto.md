@@ -1,6 +1,6 @@
 ---
 title: Use a custom camera animation with a geocoder
-description: Use camera animation options with the mapbox-gl-geocoder to create a custom animation when the user selects a result.
+description: Use camera animation options with the mapbox-gl-geocoder to create a custom animation when the user selects a search result.
 topics:
   - Geocoder
 thumbnail: mapbox-gl-geocoder-with-flyto
@@ -17,6 +17,8 @@ prependJs:
 - "import iframe from './mapbox-gl-geocoder-with-flyto.html?iframe';"
 ---
 
-Use camera animation options with the [mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) to create a custom animation when the user selects a result.
+This example uses camera animation options with the [mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) control to create a custom [`flyTo`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#flyto) animation when the user selects a search result returned by the [Mapbox Geocoding API](https://docs.mapbox.com/api/search/geocoding/).
+
+Search for a place like _Port-au-Prince_ to see the animation.
 
 {{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}
