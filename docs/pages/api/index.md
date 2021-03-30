@@ -37,7 +37,7 @@ Mapbox GL JS is a JavaScript library that uses WebGL to render interactive maps 
 
 ## Quickstart
 
-{{ 
+{{
   <div className='mb18'>
     <Example
         frontMatter={{
@@ -112,9 +112,29 @@ Mapbox GL JS v2 is backwards-compatible and existing layers and APIs will contin
 
 ## Transpiling v2
 
-Mapbox GL JS v2 is distributed as an ES6 compatible JavaScript bundle and is compatible with all major modern browsers. If you are using v2 with a module bundler such as Webpack or Rollup along with a transpiler such as Babel, use the ignore option in Babel to prevent Mapbox GL JS from being transpiled:
+Mapbox GL JS v2 is distributed as an ES6 compatible JavaScript bundle and is compatible with all major modern browsers.
 
-* If you are using Webpack, you can use the `!` prefix in the import statement to exclude mapbox-gl from being transformed by existing loaders. See Webpack loaders [inline usage docs](https://webpack.js.org/concepts/loaders/#inline) for more details.
+The JavaScript bundle is incompatible with some Babel transforms because of the way it shares code between the main thread and Web Worker. We do this to reduce the bundle size and improve rendering performance. If you are using v2 with a module bundler such as Webpack or Rollup along with a transpiler such as Babel, there are three ways to make it compatible:
+
+- Use `browserslist` to target transpilation to a set of compatible transforms
+- Explicitly disable transpiling of the Mapbox GL JS bundle
+- Load and transpile Web Worker code separately at the cost of increasing bundle size and reducing performance.
+
+### Targeting transpilation to ES6 with browserslist
+
+* If you're using [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env) in conjunction with [browserslist](https://github.com/browserslist/browserslist) to set target browser environments, consider using the following `browserslist` queries to select a set of compatible transforms.
+```
+>0.2%, not dead, not ie 11, not chrome < 51, not safari < 10
+```
+**OR**
+```
+defaults, not ie 11
+```
+This can be specified in your project's `package.json` or in a `.browserslistrc` file. See [@babel/preset-env docs](https://babeljs.io/docs/en/babel-preset-env#browserslist-integration) for more details.
+
+### Excluding GL-JS explicitly from transpilation
+
+* If other parts of your application need ES5 transpilation, then consider excluding GL JS explicitly from transpilation. If you are using Webpack, you can use the `!` prefix in the import statement to exclude mapbox-gl from being transformed by existing loaders. See Webpack loaders [inline usage docs](https://webpack.js.org/concepts/loaders/#inline) for more details.
 
 ```js
 import mapboxgl from '!mapbox-gl';
@@ -122,8 +142,7 @@ import mapboxgl from '!mapbox-gl';
 
 **OR**
 
-* You can also configure this centrally in `webpack.config.js` by adding the [ignore](https://babeljs.io/docs/en/options#ignore) option to Babel.
-
+You can also configure this centrally in `webpack.config.js` by adding the [ignore](https://babeljs.io/docs/en/options#ignore) option to Babel.
 ```
 use: {
   loader: 'babel-loader',
@@ -135,10 +154,9 @@ use: {
   }
 }
 ```
+### Loading and transpiling the Web Worker separately
 
-### Forcing Transpilation with Babel
-
-If your application requires ES5 compatibility, then your module bundler needs to be configured to load and transpile Mapbox GL JS's WebWorker separately. Mapbox GL JS can be configured with bundler specific `worker-loader` plugins. (See. [webpack-worker-loader] (https://webpack.js.org/loaders/worker-loader/) and [rollup-plugin-worker-loader](https://www.npmjs.com/package/rollup-plugin-web-worker-loader)).
+If your application requires ES5 compatibility, then your module bundler needs to be configured to load and transpile Mapbox GL JS's Web Worker separately. This comes at the cost of significantly increasing the bundle size and negatively impacting rendering performance and you should only do this if you have a strong need for supporting legacy browsers. Mapbox GL JS can be configured with bundler specific `worker-loader` plugins. See [webpack-worker-loader](https://webpack.js.org/loaders/worker-loader/) and [rollup-plugin-worker-loader](https://www.npmjs.com/package/rollup-plugin-web-worker-loader).
 
 
 * If you are using Webpack, you can configure `worker-loader` to be used inline when importing mapbox-gl:
@@ -186,6 +204,47 @@ let map = new mapboxgl.Map({
 });
 ```
 
+## Writing Automated Tests
+
+Run automated browser tests without an access token by setting the `testMode` `Map` option. The resulting `Map` instance does not produce visual output, but still loads locally hosted fixtures for styles and tiles and maintains full JavaScript API compatibility.
+This means that automated tests can exercise and assert state via the public API. This includes but is not limited to:
+* Listen for interaction events like `click`, `mouseover` etc on Layers.
+* Extract feature data with `map.queryRenderedFeatures()`.
+* Update view state `center`, `pitch`, `bearing`, `map.easeTo()`, `map.flyTo()` etc.
+* Interact with `Marker` and `Popup` instances.
+
+Example initialization of a `Map` in `testMode`:
+```js
+var map = new mapboxgl.Map({
+    container: 'map',
+    zoom: 1,
+    fadeDuration: 0,
+    center: [0, 0],
+    testMode: true,
+    // Load inline style
+    style: {
+        version: 8,
+        sources: {
+            land: {
+                type: 'geojson',
+                data: `${location.origin}/test/browser/fixtures/land.json` // Load local geojson fixture
+            }
+        },
+        layers: [
+            {
+                id: 'land',
+                type: 'fill',
+                source: 'land',
+                paint: {
+                    'fill-color': '#f0e9e1'
+                }
+            }
+        ]
+    }
+});
+```
+
+For a more detailed demo of using `testMode` with Selenium, [explore our sample browser tests](https://github.com/mapbox/mapbox-gl-js/tree/main/test/browser).
 
 ## CSP Directives
 
