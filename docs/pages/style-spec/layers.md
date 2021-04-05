@@ -64,10 +64,13 @@ https://github.com/mapbox/mapbox-gl-js/blob/main/src/style-spec/reference/v8.jso
 The `background` style layer covers the entire map. Use a background style layer to configure a color or pattern to show below all other map content. If the background layer is transparent or omitted from the style, any part of the map view that does not show another style layer is transparent.
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-background"
     alt="Vintage map style with a brown halftone background pattern."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
@@ -81,10 +84,13 @@ The [Vintage map style](https://blog.mapbox.com/designing-the-vintage-style-in-m
 A `fill` style layer renders one or more filled (and optionally stroked) polygons on a map. You can use a fill layer to configure the visual appearance of polygon or multipolygon features.
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-fill"
     alt="Map of Washington, D.C. with a purple isochrone polygon in the center."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
@@ -98,10 +104,13 @@ This map of Washington, D.C. uses the [`fill-opacity`](/mapbox-gl-js/style-spec/
 A `line` style layer renders one or more stroked polylines on the map. You can use a line layer to configure the visual appearance of polyline or multipolyline features.
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-line"
     alt="Outdoors style map with a red line showing a hiking path."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
@@ -115,10 +124,13 @@ This map of a [Strava](https://blog.mapbox.com/strava-launches-gorgeous-new-outd
 A `symbol` style layer renders icon and text labels at points or along lines on a map. You can use a symbol layer to configure the visual appearance of labels for features in vector tiles.
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-symbol"
     alt="Map with thirty shopping bag icons, color-coded red, orange, and green."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
@@ -132,10 +144,13 @@ This [map of Denver area businesses](/help/troubleshooting/using-recolorable-ima
 A `raster` style layer renders raster tiles on a map. You can use a raster layer to configure the color parameters of raster tiles.
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-raster"
     alt="Shortwave infrared imagery of California wildfires overlayed near the city of Morgan Hill."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
@@ -149,10 +164,13 @@ This [interactive SWIR imagery map by Maxar](https://blog.maxar.com/news-events/
 A `circle` style layer renders one or more filled circles on a map. You can use a circle layer to configure the visual appearance of point or point collection features in vector tiles. A circle layer renders circles whose radii are measured in screen units.
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-circle"
     alt="Map with circles of different sizes and colors."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
@@ -166,10 +184,13 @@ This [cluster map](/mapbox-gl-js/example/cluster/) uses a circle layer with a Ge
 A `fill-extrusion` style layer renders one or more filled (and optionally stroked) extruded (3D) polygons on a map. You can use a fill-extrusion layer to configure the extrusion and visual appearance of polygon or multipolygon features.
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-fill-extrusion"
     alt="Map of Europe and North Africa with countries extruded to various heights."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
@@ -183,10 +204,13 @@ This map uses an external dataset to provide data-driven values for the [`fill-e
 A `heatmap` style layer renders a range of colors to represent the density of points in an area.
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-heatmap"
     alt="Dark map with a heatmap layer glowing red inside and white outside."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
@@ -200,10 +224,13 @@ A `heatmap` style layer renders a range of colors to represent the density of po
 A `hillshade` style layer renders digital elevation model (DEM) data on the client-side. The implementation only supports [Mapbox Terrain RGB](/help/how-mapbox-works/mapbox-data/#mapbox-terrain-rgb) and Mapzen Terrarium tiles.
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-hillshade"
     alt="Map of Mount Shasta rising up with striking texture and shading."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
@@ -219,10 +246,13 @@ A `sky` style layer renders a stylized spherical dome that encompasses the entir
 <!-- copyeditor enable represents -->
 
 {{
+  <div className='relative' style={{maxWidth: 800, height: 267}}>
   <AppropriateImage
     imageId="layer-sky"
     alt="A simulated sunrise over the deserts of California."
+    background={true}
   />
+  </div>
 }}
 
 {{<Caption>}}
