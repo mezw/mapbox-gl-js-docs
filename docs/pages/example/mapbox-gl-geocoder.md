@@ -24,6 +24,6 @@ It adds the control by loading the [mapbox-gl-geocoder](https://github.com/mapbo
 
 Search for a place like _Moulin Rouge_ to test the geocoder control.
 
-To explore how geocoding query parameters affect places search results, use the [Search playground](https://www.mapbox.com/search-playground/).
+To explore how geocoding query parameters affect places search results, use the [Search playground](https://docs.mapbox.com/search-playground/).
 
 {{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

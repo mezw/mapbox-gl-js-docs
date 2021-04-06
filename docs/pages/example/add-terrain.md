@@ -20,6 +20,6 @@ prependJs:
 
 This example adds 3D terrain to a map using [`setTerrain`](/mapbox-gl-js/api/map/#map#setterrain) with a [`raster-dem` source](/mapbox-gl-js/style-spec/sources/#raster-dem). 
 
-It uses [`exaggeration`](https://docs.mapbox.com/mapbox-gl-js/style-spec/terrain/#exaggeration) to exaggerate the height of the terrain. It also adds a [`sky` layer](https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#sky) that shows when the map is highly [pitched](https://docs.mapbox.com/help/glossary/camera/).
+It uses [`exaggeration`](/mapbox-gl-js/style-spec/terrain/#exaggeration) to exaggerate the height of the terrain. It also adds a [`sky` layer](/mapbox-gl-js/style-spec/layers/#sky) that shows when the map is highly [pitched](https://docs.mapbox.com/help/glossary/camera/).
 
 {{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

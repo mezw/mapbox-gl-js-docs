@@ -72,7 +72,7 @@ This documentation is divided into several sections:
 * [**Markers and controls**](/mapbox-gl-js/api/markers/). This section describes the user interface elements that you can add to your map. The items in this section exist outside of the map's `canvas` element.
 * [**Geography and geometry**](/mapbox-gl-js/api/geography/). This section includes general utilities and types that relate to working with and manipulating geographic information or geometries.
 * [**User interaction handlers**](/mapbox-gl-js/api/handlers/). The items in this section relate to the ways in which the map responds to user input.
-* [**Sources**](/mapbox-gl-js/api/sources/). This section describes the source types Mapbox GL JS can handle besides the ones described in the [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/).
+* [**Sources**](/mapbox-gl-js/api/sources/). This section describes the source types Mapbox GL JS can handle besides the ones described in the [Mapbox Style Specification](/mapbox-gl-js/style-spec/).
 * [**Events**](/mapbox-gl-js/api/events/). This section describes the different types of events that Mapbox GL JS can raise.
 
 Each section describes classes or objects as well as their **properties**, **parameters**, **instance members**, and associated **events**. Many sections also include inline code examples and related resources.
@@ -272,7 +272,7 @@ mapboxgl.workerUrl = "${urls().js.replace('.js', '-csp-worker.js')}";
 </script>`}</Copyable>
 }}
 
-If you use the `sandbox` directive, and your [access token is restricted to certain URLs](https://docs.mapbox.com/accounts/overview/tokens/#url-restrictions), the `allow-same-origin` value is required. This allows requests to have a `Referer` header that is not `null`. See the section on [Referrer Policies](https://docs.mapbox.com/mapbox-gl-js/overview/#referrer-policies) for further information.
+If you use the `sandbox` directive, and your [access token is restricted to certain URLs](https://docs.mapbox.com/accounts/overview/tokens/#url-restrictions), the `allow-same-origin` value is required. This allows requests to have a `Referer` header that is not `null`. See the section on [Referrer Policies](/mapbox-gl-js/api/#referrer-policies) for further information.
 
 ## Referrer Policies
 
@@ -304,13 +304,13 @@ Pricing for Mapbox GL JS v1.0.0 and higher is measured by **Map Loads for Web**.
 {{<Note title="Mapbox GL JS v1.x.x compared to v2.x.x">}}
 The action that triggers a map load changed in Mapbox GL JS v2.0.0:
 
-- **Mapbox GL JS v2.x.x**: A map load occurs whenever a Mapbox GL JS [`Map`](https://docs.mapbox.com/mapbox-gl-js/api/#map) object is initialized on a webpage.
-- **Mapbox GL JS v1.x.x**: A map load occurs whenever a Mapbox GL JS [`Map`](https://docs.mapbox.com/mapbox-gl-js/api/#map) object is initialized on a webpage _and_ you request a Mapbox-hosted map tile.
+- **Mapbox GL JS v2.x.x**: A map load occurs whenever a Mapbox GL JS [`Map`](/mapbox-gl-js/api/map/) object is initialized on a webpage.
+- **Mapbox GL JS v1.x.x**: A map load occurs whenever a Mapbox GL JS [`Map`](/mapbox-gl-js/api/map/) object is initialized on a webpage _and_ you request a Mapbox-hosted map tile.
 
 Before updating an existing implementation from v1.x.x to v2.x.x, review this pricing documentation to estimate expected costs.
 {{</Note>}}
 
 
-Web maps using Mapbox GL JS v1.0.0 and higher are billed by **Map Loads for Web**. Beginning with Mapbox GL JS v2.0.0, a map load occurs whenever a Mapbox GL JS [`Map`](https://docs.mapbox.com/mapbox-gl-js/api/#map) object is initialized. Measuring usage by map loads means that users interacting with your web map can toggle layers from non-composited sources on and off, zoom and pan around the map, and toggle between styles without affecting your usage. You can also add non-composited vector or raster sources to your map at runtime without incurring additional charges. The maximum session length for a map load is 12 hours. If a user has the same map open after 12 hours, Mapbox will count that as a new map load session.
+Web maps using Mapbox GL JS v1.0.0 and higher are billed by **Map Loads for Web**. Beginning with Mapbox GL JS v2.0.0, a map load occurs whenever a Mapbox GL JS [`Map`](/mapbox-gl-js/api/map/) object is initialized. Measuring usage by map loads means that users interacting with your web map can toggle layers from non-composited sources on and off, zoom and pan around the map, and toggle between styles without affecting your usage. You can also add non-composited vector or raster sources to your map at runtime without incurring additional charges. The maximum session length for a map load is 12 hours. If a user has the same map open after 12 hours, Mapbox will count that as a new map load session.
 
 For an overview of how to manage your costs for common interactive, non-interactive, and hybrid web map implementations, see the [Manage your web map costs](https://docs.mapbox.com/help/troubleshooting/manage-web-map-costs/) troubleshooting guide.

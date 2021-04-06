@@ -18,9 +18,9 @@ prependJs:
 
 A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `"type"` property, and must be one of {{layerTypes.map((t, i) => <var key={i}>{t}</var>).reduce((prev, curr) => [prev, ', ', curr])}}.
 
-Except for layers of the <var>background</var> or <var>sky</var> types, each layer must refer to a [source](https://docs.mapbox.com/help/glossary/source). Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.
+Except for layers of the <var>background</var> or <var>sky</var> types, each layer must refer to a [source](https://docs.mapbox.com/help/glossary/source/). Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.
 
-Here is an example `layers` object which could be included in a [style](https://docs.mapbox.com/help/glossary/style):
+Here is an example `layers` object which could be included in a [style](https://docs.mapbox.com/help/glossary/style/):
 
 ```json
 "layers": {{JSON.stringify(

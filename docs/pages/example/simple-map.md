@@ -17,7 +17,7 @@ prependJs:
 - "import iframe from './simple-map.html?iframe';"
 ---
 
-This example uses [`mapboxgl.Map`](/mapbox-gl-js/api/map) to initialize a Mapbox map inside an HTML element on a webpage.
+This example uses [`mapboxgl.Map`](/mapbox-gl-js/api/map/) to initialize a Mapbox map inside an HTML element on a webpage.
 
 You can use the [`map` parameters](/mapbox-gl-js/api/map/#map-parameters) `style`, `center`, and `zoom` to define the initial appearance of the map.
 

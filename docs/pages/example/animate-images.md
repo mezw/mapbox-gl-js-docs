@@ -17,6 +17,6 @@ prependJs:
 - "import iframe from './animate-images.html?iframe';"
 ---
 
-Use a series of [image sources](/mapbox-gl-js/style-spec#sources-image) to create an animation.
+Use a series of [image sources](/mapbox-gl-js/style-spec/#sources-image) to create an animation.
 
 {{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

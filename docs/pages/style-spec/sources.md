@@ -25,7 +25,7 @@ A map or layer **source** states which data the map should display. Specify the 
     return [prev, ', ', curr]
 })}}. 
 
-A [source](https://docs.mapbox.com/help/glossary/source) provides map data that Mapbox GL JS can use with a [style](https://docs.mapbox.com/help/glossary/style) document to render a visual representation of that data. This delegation makes it possible to style the same source in different ways, as you might do to differentiate the appearances of different types of roads in a highways layer.
+A [source](https://docs.mapbox.com/help/glossary/source/) provides map data that Mapbox GL JS can use with a [style](https://docs.mapbox.com/help/glossary/style/) document to render a visual representation of that data. This delegation makes it possible to style the same source in different ways, as you might do to differentiate the appearances of different types of roads in a highways layer.
 
 {{ <Note title="Specify a style"><p>Adding a source to a map or layer isn't enough to make data appear on the map. You must also specify a style to provide properties like color or width for each feature.</p></Note> }}
 

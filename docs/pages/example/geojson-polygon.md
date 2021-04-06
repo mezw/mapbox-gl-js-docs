@@ -16,6 +16,6 @@ prependJs:
 - "import iframe from './geojson-polygon.html?iframe';"
 ---
 
-Style a polygon with the [fill layer](/mapbox-gl-js/style-spec#layers-fill) type.
+Style a polygon with the [fill layer](/mapbox-gl-js/style-spec/#layers-fill) type.
 
 {{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

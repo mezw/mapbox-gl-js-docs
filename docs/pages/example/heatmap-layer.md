@@ -16,6 +16,6 @@ prependJs:
 - "import iframe from './heatmap-layer.html?iframe';"
 ---
 
-Visualize earthquake frequency by location using a [heatmap layer](/mapbox-gl-js/style-spec#layers-heatmap).
+Visualize earthquake frequency by location using a [heatmap layer](/mapbox-gl-js/style-spec/#layers-heatmap).
 
 {{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}
