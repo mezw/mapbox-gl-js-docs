@@ -18,10 +18,10 @@
 </style>
 
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.1/mapbox-gl-draw.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.2/mapbox-gl-draw.js"></script>
 <link
     rel="stylesheet"
-    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.1/mapbox-gl-draw.css"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.2/mapbox-gl-draw.css"
     type="text/css"
 />
 <div id="map"></div>
@@ -43,7 +43,8 @@
         controls: {
             polygon: true,
             trash: true
-        }
+        },
+        defaultMode: 'draw_polygon'
     });
     map.addControl(draw);
 
