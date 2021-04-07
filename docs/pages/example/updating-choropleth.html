@@ -64,6 +64,24 @@
     var zoomThreshold = 4;
 
     map.on('load', function () {
+        /** Add a custom vector tileset source. The tileset used in
+         * this example contains a feature for every state and
+         * county in the U.S.
+         * Each state contains four properties. For example:
+         *     {
+         *         isState: true,
+         *         name: "Wyoming",
+         *         population: 584153,
+         *         state: 56
+         *     }
+         * Each county contains four properties. For example:
+         *     {
+         *         county: 16049,
+         *         isCounty: true,
+         *         name: "Idaho County",
+         *         population: 16315
+         *     }
+         */
         map.addSource('population', {
             'type': 'vector',
             'url': 'mapbox://mapbox.660ui7x6'
@@ -76,6 +94,8 @@
                 'source-layer': 'state_county_population_2014_cen',
                 'maxzoom': zoomThreshold,
                 'type': 'fill',
+                // only include features for which the "isState"
+                // property is "true"
                 'filter': ['==', 'isState', true],
                 'paint': {
                     'fill-color': [
@@ -114,6 +134,8 @@
                 'source-layer': 'state_county_population_2014_cen',
                 'minzoom': zoomThreshold,
                 'type': 'fill',
+                // only include features for which the "isCounty"
+                // property is "true"
                 'filter': ['==', 'isCounty', true],
                 'paint': {
                     'fill-color': [

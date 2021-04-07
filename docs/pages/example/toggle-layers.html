@@ -55,7 +55,14 @@
 
     // Wait until the map has finished loading.
     map.on('load', function () {
-        // Add source and layer for museums.
+        // Add a custom vector tileset source. This tileset contains
+        // point features representing museums. Each feature contains
+        // three properties. For example:
+        // {
+        //     alt_name: "Museo Arqueologico",
+        //     name: "Museo Inka",
+        //     tourism: "museum"
+        // }
         map.addSource('museums', {
             type: 'vector',
             url: 'mapbox://mapbox.2opop9hr'
@@ -75,7 +82,9 @@
             'source-layer': 'museum-cusco'
         });
 
-        // Add source and layer for contours.
+        // Add the Mapbox Terrain v2 vector tileset. Read more about
+        // the structure of data in this tileset in the documentation:
+        // https://docs.mapbox.com/vector-tiles/reference/mapbox-terrain-v2/
         map.addSource('contours', {
             type: 'vector',
             url: 'mapbox://mapbox.mapbox-terrain-v2'

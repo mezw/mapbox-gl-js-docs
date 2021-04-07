@@ -43,8 +43,15 @@
         // Variable for the draw box element.
         var box;
 
-        // Add the source to query. In this example we're using
-        // county polygons uploaded as vector tiles
+        // Add a custom vector tileset source. The tileset used in
+        // this example contains a feature for every county in the U.S.
+        // Each county contains four properties. For example:
+        // {
+        //     COUNTY: "Uintah County",
+        //     FIPS: 49047,
+        //     median-income: 62363,
+        //     population: 34576
+        // }
         map.addSource('counties', {
             'type': 'vector',
             'url': 'mapbox://mapbox.82pkq93d'
