@@ -2,16 +2,23 @@
 
 <script>
     var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11'
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/dark-v10', // style URL
+        zoom: 10, // starting zoom
+        center: [-77.432, 25.0306] // starting position
     });
 
     map.on('load', function () {
+        // Load an image from an external URL.
         map.loadImage(
             'https://upload.wikimedia.org/wikipedia/commons/7/7c/201408_cat.png',
             function (error, image) {
                 if (error) throw error;
+
+                // Add the image to the map style.
                 map.addImage('cat', image);
+
+                // Add a data source containing one point feature.
                 map.addSource('point', {
                     'type': 'geojson',
                     'data': {
@@ -21,18 +28,20 @@
                                 'type': 'Feature',
                                 'geometry': {
                                     'type': 'Point',
-                                    'coordinates': [0, 0]
+                                    'coordinates': [-77.4144, 25.0759]
                                 }
                             }
                         ]
                     }
                 });
+
+                // Add a layer to use the image to represent the data.
                 map.addLayer({
                     'id': 'points',
                     'type': 'symbol',
-                    'source': 'point',
+                    'source': 'point', // reference the data source
                     'layout': {
-                        'icon-image': 'cat',
+                        'icon-image': 'cat', // reference the image
                         'icon-size': 0.25
                     }
                 });

@@ -20,6 +20,7 @@ The intended audience of this specification includes:
 
 - Advanced designers and cartographers who want to write styles by hand rather than use [Mapbox Studio](https://studio.mapbox.com).
 - Developers using style-related features of [Mapbox GL JS](/mapbox-gl-js/api/) or the [Mapbox Maps SDK for Android](https://docs.mapbox.com/android/maps/guides/).
+
 - Authors of software that generates or processes Mapbox styles.
 
 For platform-appropriate documentation of style-related features, developers using the Mapbox Maps SDK for iOS should consult the [iOS SDK API reference](https://docs.mapbox.com/ios/maps/overview/), and developers using the Mapbox Maps SDK for macOS should consult the [macOS SDK API reference](https://mapbox.github.io/mapbox-gl-native/macos/).
