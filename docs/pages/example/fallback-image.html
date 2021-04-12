@@ -7,6 +7,11 @@
         zoom: 5
     });
     map.on('load', function () {
+        // Add a new GeoJSON source with features that include
+        // an "icon" property. In this case, one feature has an
+        // "icon" property that does not match the name of any
+        // image in the style's sprite. For this feature, the map
+        // will display a fallback image ("rocket-15").
         map.addSource('points', {
             'type': 'geojson',
             'data': {
@@ -26,6 +31,7 @@
                             'icon': 'monument'
                         }
                     },
+
                     {
                         'type': 'Feature',
                         'geometry': {
@@ -34,6 +40,9 @@
                         },
                         'properties': {
                             'title': 'Pittsburgh',
+                            // The Mapbox Light style's sprite does not
+                            // contain an image with the name "bridges-15"
+                            // but we can display a fallback image.
                             'icon': 'bridges'
                         }
                     },
@@ -56,9 +65,16 @@
             'type': 'symbol',
             'source': 'points',
             'layout': {
+                // These icons are a part of the Mapbox Light style.
+                // To view all images available in a Mapbox style, open
+                // the style in Mapbox Studio and click the "Images" tab.
+                // To add a new image to the style at runtime see
+                // https://docs.mapbox.com/mapbox-gl-js/example/add-image/
                 'icon-image': [
                     'coalesce',
                     ['image', ['concat', ['get', 'icon'], '-15']],
+                    // If no image with the name above exists, show the
+                    // "rocket-15" image instead.
                     ['image', 'rocket-15']
                 ],
                 'text-field': ['get', 'title'],

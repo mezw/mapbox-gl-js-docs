@@ -14,8 +14,11 @@ prependJs:
 - "import Example from '../../components/example';"
 - "import html from './popup-on-click.html?code';"
 - "import iframe from './popup-on-click.html?iframe';"
+- "import ReferenceAnIcon from '../../components/notes/reference-an-icon';"
 ---
 
-When a user clicks a symbol, show a [`Popup`](/mapbox-gl-js/api/markers/#popup) containing more information. The symbols are from the [Maki](https://labs.mapbox.com/maki-icons/) symbol set used in the Mapbox Streets style.
+When a user clicks a circle, show a [`Popup`](/mapbox-gl-js/api/markers/#popup) containing more information.
+
+{{ <ReferenceAnIcon styleName="Mapbox Streets"/> }}
 
 {{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

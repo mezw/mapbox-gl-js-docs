@@ -18,4 +18,6 @@ prependJs:
 
 Use a [`coalesce`](/mapbox-gl-js/style-spec/expressions/#coalesce) expression to display another image when a requested image is not available.
 
+This example uses a GeoJSON source with features that include an `icon` property. In this case, one feature has an `icon` property that does not match the name of any image in the [Mapbox Light](https://www.mapbox.com/maps/light) style's [sprite](https://docs.mapbox.com/help/glossary/sprite/). For that feature, the map will display a fallback image of a rocket.
+
 {{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

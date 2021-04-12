@@ -1,6 +1,16 @@
 <div id="map"></div>
 
 <script>
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v9',
+        center: [-77.04, 38.907],
+        zoom: 11.15
+    });
+
+    // This GeoJSON contains features that include an "icon"
+    // property. The value of the "icon" property corresponds
+    // to an image in the Mapbox Light style's sprite.
     var places = {
         'type': 'FeatureCollection',
         'features': [
@@ -8,7 +18,7 @@
                 'type': 'Feature',
                 'properties': {
                     'description': "Ford's Theater",
-                    'icon': 'theatre'
+                    'icon': 'theatre-15'
                 },
                 'geometry': {
                     'type': 'Point',
@@ -19,7 +29,7 @@
                 'type': 'Feature',
                 'properties': {
                     'description': 'The Gaslight',
-                    'icon': 'theatre'
+                    'icon': 'theatre-15'
                 },
                 'geometry': {
                     'type': 'Point',
@@ -30,7 +40,7 @@
                 'type': 'Feature',
                 'properties': {
                     'description': "Horrible Harry's",
-                    'icon': 'bar'
+                    'icon': 'bar-15'
                 },
                 'geometry': {
                     'type': 'Point',
@@ -41,7 +51,7 @@
                 'type': 'Feature',
                 'properties': {
                     'description': 'Bike Party',
-                    'icon': 'bicycle'
+                    'icon': 'bicycle-15'
                 },
                 'geometry': {
                     'type': 'Point',
@@ -52,7 +62,7 @@
                 'type': 'Feature',
                 'properties': {
                     'description': 'Rockabilly Rockstars',
-                    'icon': 'music'
+                    'icon': 'music-15'
                 },
                 'geometry': {
                     'type': 'Point',
@@ -63,7 +73,7 @@
                 'type': 'Feature',
                 'properties': {
                     'description': 'District Drum Tribe',
-                    'icon': 'music'
+                    'icon': 'music-15'
                 },
                 'geometry': {
                     'type': 'Point',
@@ -74,7 +84,7 @@
                 'type': 'Feature',
                 'properties': {
                     'description': 'Motown Memories',
-                    'icon': 'music'
+                    'icon': 'music-15'
                 },
                 'geometry': {
                     'type': 'Point',
@@ -83,13 +93,6 @@
             }
         ]
     };
-
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/light-v9',
-        center: [-77.04, 38.907],
-        zoom: 11.15
-    });
 
     map.on('load', function () {
         // Add a GeoJSON source containing place coordinates and information.
@@ -107,7 +110,7 @@
                 'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
                 'text-radial-offset': 0.5,
                 'text-justify': 'auto',
-                'icon-image': ['concat', ['get', 'icon'], '-15']
+                'icon-image': ['get', 'icon']
             }
         });
 

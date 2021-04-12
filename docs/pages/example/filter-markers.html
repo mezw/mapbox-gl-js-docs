@@ -51,6 +51,11 @@
 <nav id="filter-group" class="filter-group"></nav>
 
 <script>
+    // This GeoJSON contains features that include an "icon"
+    // property. The value of the "icon" property corresponds
+    // to an image in the Mapbox Light style's sprite. (Note:
+    // the name of images is the value of the "icon" property
+    // + "-15".)
     var places = {
         'type': 'FeatureCollection',
         'features': [
@@ -153,6 +158,11 @@
                     'type': 'symbol',
                     'source': 'places',
                     'layout': {
+                        // These icons are a part of the Mapbox Light style.
+                        // To view all images available in a Mapbox style, open
+                        // the style in Mapbox Studio and click the "Images" tab.
+                        // To add a new image to the style at runtime see
+                        // https://docs.mapbox.com/mapbox-gl-js/example/add-image/
                         'icon-image': symbol + '-15',
                         'icon-allow-overlap': true
                     },
