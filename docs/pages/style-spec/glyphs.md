@@ -13,7 +13,7 @@ prependJs:
 
 <!--copyeditor disable basic-->
 
-A style's `glyphs` property provides a URL template for loading signed-distance-field glyph sets in PBF format.
+A style's `glyphs` property provides a URL template for loading signed-distance-field glyph sets in PBF format. This property is created by Mapbox Studio automatically, and it is unlikely you will need to change it. Your map client (Mapbox GL JS, for example) will generate and send glyph requests to the specified font server using the URL template you provide.
 
 ```json
 "glyphs": {{JSON.stringify(
