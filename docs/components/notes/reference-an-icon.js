@@ -31,8 +31,8 @@ export default class ReferenceAnIcon extends React.PureComponent {
                     image to the style at runtime see the{' '}
                     <a href="/mapbox-gl-js/example/add-image/">
                         Add an icon to the map
-                    </a>
-                    .
+                    </a>{' '}
+                    example.
                 </p>
             </Note>
         );
