@@ -178,6 +178,11 @@
             }
         });
 
+        map.on('movestart', function () {
+            // reset features filter as the map starts moving
+            map.setFilter('airport', ['has', 'abbrev']);
+        });
+
         map.on('moveend', function () {
             var features = map.queryRenderedFeatures({ layers: ['airport'] });
 
