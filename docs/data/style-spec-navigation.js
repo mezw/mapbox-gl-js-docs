@@ -121,7 +121,7 @@ export const styleSpecNavigation = [
                 slug: `${slug(group.name)}`,
                 level: 2
             });
-            const thirdLevelItems = group.expressions.map((g) => {
+            const thirdLevelItems = group.expressions?.map((g) => {
                 return {
                     text: g.name,
                     slug: `${group.name === 'Types' ? 'types-' : ''}${

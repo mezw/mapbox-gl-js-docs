@@ -37,8 +37,8 @@ const groupedExpressions = [
 ].map((group) => ({
     name: group,
     expressions: expressionGroups[group]
-        .sort((a, b) => a.localeCompare(b))
-        .map((name) => expressions[name])
+        ?.sort((a, b) => a.localeCompare(b))
+        ?.map((name) => expressions[name])
 }));
 
 export { sourceTypes, layerTypes, groupedExpressions };

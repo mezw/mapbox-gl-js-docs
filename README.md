@@ -75,6 +75,26 @@ The command will print the URL you can use to view the documentation.
 
 💡 If you receive an error related to `@mapbox/appropriate-images`, try `nvm use && npm start`.
 
+💡 https://github.com/mapbox/mapbox-gl-js/issues/10349
+ansis commented on 6 Feb 2021
+We only host the documentation for the latest version
+
+We haven't removed any APIs since v1.13.0 so anything in that version should be documented on the site. Some new functionality has been added but unfortunately it isn't labelled. In general, if it isn't related to 3D terrain it probably existed in v1.13.0.
+
+But it's also possible to build the v1.12 docs locally from https://github.com/mapbox/mapbox-gl-js-docs/tree/533acd5385be25a4b82b2cf458c2ce5b579911ac
+
+The process should look something like this (I didn't test it):
+
+git clone git@github.com:mapbox/mapbox-gl-js-docs.git
+cd mapbox-gl-js-docs
+git checkout 533acd5385be25a4b82b2cf458c2ce5b579911ac
+npm install
+git submodule update --init
+npm start
+or
+nvm use 10 && npm start
+# open http://localhost:8080/mapbox-gl-js/api/
+
 💡 You can use this repo to preview changes to content in the `mapbox-gl-js` submodule. 
 1. To preview changes to the style spec, make your changes to files in the `node_modules` folder, save the files, and then use `npm start` to start the server and view the pages in a web browser. 
 1. To preview changes to the main `mapbox-gl-js` source code, make your changes to a file (for example, `mapbox-gl-js/src/ui/marker.js`), save the file, and then use `npm start` to start the server and view the page in a web browser. 
